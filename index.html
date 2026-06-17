@@ -11,6 +11,10 @@
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#FF6B35" />
   <title>Sachin Kumar — Web Developer Portfolio</title>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usKu8zTsveElMwkChvceou9QAij3eneLn2Z1A8iloa927ggmj1PtS6WICKNVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
   <style>
     :root {
       --primary: #FF6B35;
@@ -164,13 +168,32 @@
     }
 
     .contact { margin-top: 18px; font-size: 13px; line-height: 2; }
-    .contact-item { margin-bottom: 12px; }
+    .contact-item { 
+      margin-bottom: 12px; 
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .contact-item i {
+      color: var(--primary);
+      font-size: 14px;
+      margin-top: 1px;
+      flex-shrink: 0;
+      width: 18px;
+      text-align: center;
+    }
+
+    .contact-info { flex: 1; }
+
     .contact-label {
       color: var(--glow);
       font-weight: 700;
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 2px;
     }
 
     .contact a {
@@ -179,6 +202,7 @@
       border-bottom: 2px solid transparent;
       transition: var(--transition);
       font-weight: 500;
+      display: inline-block;
     }
 
     .contact a:hover {
@@ -194,6 +218,14 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 2.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section h3 i {
+      font-size: 14px;
+      color: var(--glow);
     }
 
     .skills { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -209,6 +241,14 @@
       position: relative;
       color: var(--white);
       font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skill i, .term-link i {
+      font-size: 11px;
+      opacity: 0.8;
     }
 
     .skill:hover, .term-link:hover {
@@ -220,11 +260,12 @@
     }
 
     .term-link {
-      display: inline-block;
+      display: inline-flex;
       padding: 3px 7px;
       border-radius: 4px;
       margin: 0 1px;
       border-bottom: 2px dashed rgba(255,107,53,0.5);
+      font-size: 13px;
     }
 
     /* MAIN CONTENT */
@@ -259,6 +300,14 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-card h3 i {
+      font-size: 16px;
+      color: var(--glow);
     }
 
     ul.bullets { margin: 10px 0 0; padding-left: 18px; }
@@ -269,12 +318,47 @@
       font-size: 14px;
       font-weight: 500;
       transition: var(--transition);
+      position: relative;
+      padding-left: 10px;
+    }
+
+    ul.bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      opacity: 0;
+      transition: var(--transition);
     }
 
     ul.bullets li:hover {
       color: var(--primary);
       transform: translateX(4px);
     }
+
+    ul.bullets li:hover::before {
+      opacity: 1;
+    }
+
+    .job {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .job-icon {
+      font-size: 18px;
+      color: var(--primary);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .job-content { flex: 1; }
 
     .job h4 {
       margin: 0 0 4px;
@@ -331,6 +415,19 @@
       box-shadow: 0 12px 28px rgba(255,107,53,0.2);
     }
 
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .project-icon {
+      font-size: 18px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
     .project-tile h4 {
       margin: 0 0 7px;
       font-size: 15px;
@@ -348,7 +445,9 @@
     }
 
     .project-tile .badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       font-size: 11px;
       padding: 5px 10px;
       border-radius: 6px;
@@ -361,10 +460,14 @@
       letter-spacing: 0.5px;
     }
 
+    .badge i {
+      font-size: 10px;
+    }
+
     .project-link {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       font-size: 12px;
       color: var(--primary);
       text-decoration: none;
@@ -373,10 +476,19 @@
       font-weight: 600;
     }
 
+    .project-link i {
+      font-size: 11px;
+      transition: var(--transition);
+    }
+
     .project-link:hover {
       border-color: var(--primary);
       color: var(--accent);
       transform: translateX(2px);
+    }
+
+    .project-link:hover i {
+      transform: rotate(-45deg) translateX(2px);
     }
 
     /* MODAL */
@@ -437,6 +549,14 @@
       margin: 0 0 12px 0;
       font-weight: 800;
       letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-title i {
+      font-size: 24px;
+      color: var(--glow);
     }
 
     .modal-desc {
@@ -457,12 +577,46 @@
       cursor: pointer;
       opacity: 0.6;
       transition: var(--transition);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .close-modal:hover {
       opacity: 1;
       color: var(--primary);
       transform: rotate(90deg);
+    }
+
+    /* SOCIAL LINKS */
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255,107,53,0.14);
+      border: 1.5px solid rgba(255,107,53,0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 14px;
+    }
+
+    .social-link:hover {
+      background: rgba(255,107,53,0.28);
+      border-color: var(--primary);
+      transform: translateY(-3px) scale(1.1);
+      color: var(--white);
     }
 
     /* PRINT STYLES */
@@ -551,6 +705,8 @@
       .meta, .contact, .section h3, .muted {
         color: var(--muted) !important;
       }
+
+      .social-links { display: none; }
     }
   </style>
 </head>
@@ -559,8 +715,8 @@
 
   <div class="modal-overlay" id="infoModal">
     <div class="modal-card">
-      <button class="close-modal" id="closeModal" aria-label="Close modal">&times;</button>
-      <h2 class="modal-title" id="modalTitle">Title</h2>
+      <button class="close-modal" id="closeModal" aria-label="Close modal"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title" id="modalTitle"><i class="fas fa-code"></i> Title</h2>
       <p class="modal-desc" id="modalDesc">Description goes here.</p>
     </div>
   </div>
@@ -569,171 +725,225 @@
     <div class="resume-card" id="resume" role="main">
       <aside class="sidebar">
         <div class="identity">
-          <div class="avatar" aria-label="SK initials">SK</div>
+          <div class="avatar">SK</div>
           <div class="name-block">
             <h1>Sachin Kumar</h1>
-            <div class="tag">Full Stack Developer · AI Tools</div>
+            <div class="tag"><i class="fas fa-rocket"></i> Full Stack Developer · AI Tools</div>
           </div>
         </div>
 
         <div class="contact section">
           <div class="contact-item">
-            <div class="contact-label">📱 Phone</div>
-            <div><a href="tel:+918930017169">+91 8930017169</a></div>
+            <i class="fas fa-phone"></i>
+            <div class="contact-info">
+              <span class="contact-label">Phone</span>
+              <a href="tel:+918930017169">+91 8930017169</a>
+            </div>
           </div>
           <div class="contact-item">
-            <div class="contact-label">✉ Email</div>
-            <div><a href="mailto:thesachinmehra@gmail.com">thesachinmehra@gmail.com</a></div>
+            <i class="fas fa-envelope"></i>
+            <div class="contact-info">
+              <span class="contact-label">Email</span>
+              <a href="mailto:thesachinmehra@gmail.com">thesachinmehra@gmail.com</a>
+            </div>
           </div>
           <div class="contact-item">
-            <div class="contact-label">📍 Location</div>
-            <div>Charkhi Dadri, Haryana</div>
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="contact-info">
+              <span class="contact-label">Location</span>
+              <div style="color:var(--white);font-weight:500">Charkhi Dadri, Haryana</div>
+            </div>
           </div>
           <div class="contact-item">
-            <div class="contact-label">💻 GitHub</div>
-            <div><a href="https://github.com/sachinkr89" target="_blank" rel="noopener noreferrer">github.com/sachinkr89</a></div>
+            <i class="fab fa-github"></i>
+            <div class="contact-info">
+              <span class="contact-label">GitHub</span>
+              <a href="https://github.com/sachinkr89" target="_blank" rel="noopener noreferrer">github.com/sachinkr89</a>
+            </div>
           </div>
         </div>
 
+        <div class="social-links">
+          <a href="https://github.com/sachinkr89" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub" aria-label="GitHub Profile">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:thesachinmehra@gmail.com" class="social-link" title="Email" aria-label="Send Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="tel:+918930017169" class="social-link" title="Call Me" aria-label="Call Phone">
+            <i class="fas fa-phone"></i>
+          </a>
+          <a href="#" class="social-link" title="LinkedIn" aria-label="LinkedIn Profile">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+
         <div class="section">
-          <h3>Core Skills</h3>
+          <h3><i class="fas fa-star"></i> Core Skills</h3>
           <div class="skills">
-            <div class="skill" data-term="Python">Python</div>
-            <div class="skill" data-term="JavaScript">JavaScript</div>
-            <div class="skill" data-term="React">React</div>
-            <div class="skill" data-term="Node.js">Node.js</div>
-            <div class="skill" data-term="PostgreSQL">PostgreSQL</div>
-            <div class="skill" data-term="MySQL">MySQL</div>
-            <div class="skill" data-term="Automation">Automation</div>
-            <div class="skill" data-term="AI Integration">AI Tools</div>
+            <div class="skill" data-term="Python"><i class="fab fa-python"></i> Python</div>
+            <div class="skill" data-term="JavaScript"><i class="fab fa-js"></i> JavaScript</div>
+            <div class="skill" data-term="React"><i class="fab fa-react"></i> React</div>
+            <div class="skill" data-term="Node.js"><i class="fab fa-node"></i> Node.js</div>
+            <div class="skill" data-term="PostgreSQL"><i class="fas fa-database"></i> PostgreSQL</div>
+            <div class="skill" data-term="MySQL"><i class="fas fa-database"></i> MySQL</div>
+            <div class="skill" data-term="Automation"><i class="fas fa-cog"></i> Automation</div>
+            <div class="skill" data-term="AI Integration"><i class="fas fa-brain"></i> AI Tools</div>
           </div>
         </div>
 
         <div class="section">
-          <h3>Additional Skills</h3>
+          <h3><i class="fas fa-toolbox"></i> Additional Skills</h3>
           <div class="skills">
-            <div class="skill" data-term="HTML">HTML5</div>
-            <div class="skill" data-term="CSS">CSS3</div>
-            <div class="skill" data-term="Express">Express.js</div>
-            <div class="skill" data-term="API Development">APIs</div>
-            <div class="skill" data-term="Deployment">Deployment</div>
-            <div class="skill" data-term="Responsive Design">Responsive</div>
+            <div class="skill" data-term="HTML"><i class="fab fa-html5"></i> HTML5</div>
+            <div class="skill" data-term="CSS"><i class="fab fa-css3"></i> CSS3</div>
+            <div class="skill" data-term="Express"><i class="fas fa-server"></i> Express.js</div>
+            <div class="skill" data-term="API Development"><i class="fas fa-plug"></i> APIs</div>
+            <div class="skill" data-term="Deployment"><i class="fas fa-cloud"></i> Deployment</div>
+            <div class="skill" data-term="Responsive Design"><i class="fas fa-mobile-alt"></i> Responsive</div>
           </div>
         </div>
 
         <div class="section">
-          <h3>Languages</h3>
+          <h3><i class="fas fa-globe"></i> Languages</h3>
           <div style="color:var(--muted);font-size:13px;font-weight:500">
-            🇮🇳 Hindi (Native) · 🇬🇧 English (Basic)
+            🇮🇳 <span style="color:var(--white)">Hindi</span> (Native) · 🇬🇧 <span style="color:var(--white)">English</span> (Basic)
           </div>
         </div>
 
         <div class="section">
-          <h3>Interests</h3>
+          <h3><i class="fas fa-lightbulb"></i> Interests</h3>
           <div style="color:var(--muted);font-size:13px;font-weight:500">
-            Web Development · AI Integration · Automation · Forex Trading
+            💻 Web Dev · 🤖 AI Integration · ⚙️ Automation · 📈 Forex Trading
           </div>
         </div>
       </aside>
 
       <main class="main">
         <p class="summary">
-          Full-stack web developer with 3+ years of professional experience specializing in building modern applications with AI tool integration. Proficient in React, Node.js, and both relational databases (PostgreSQL, MySQL). Expert in <span class="term-link" data-term="Python">Python</span> automation, rapid development, and leveraging AI tools for enhanced productivity.
+          Full-stack web developer with 3+ years of professional experience specializing in building modern applications with AI tool integration. Proficient in React, Node.js, and both relational databases (PostgreSQL, MySQL). Expert in <span class="term-link" data-term="Python"><i class="fab fa-python"></i> Python</span> automation, rapid development, and leveraging AI tools for enhanced productivity.
         </p>
 
         <section class="section-card">
-          <h3>🎓 Education</h3>
+          <h3><i class="fas fa-graduation-cap"></i> Education</h3>
           <div class="job">
-            <h4>BCA (Bachelor of Computer Applications)</h4>
-            <div class="meta">DPGITM College, Gurgaon · 2022 – Present</div>
+            <div class="job-icon"><i class="fas fa-book"></i></div>
+            <div class="job-content">
+              <h4>BCA (Bachelor of Computer Applications)</h4>
+              <div class="meta">DPGITM College, Gurgaon · 2022 – Present</div>
+            </div>
           </div>
           <div class="job">
-            <h4>12th Grade (CBSE)</h4>
-            <div class="meta">RPS Sr. Sec. School · 2018 · 74.6%</div>
-          </div>
-        </section>
-
-        <section class="section-card">
-          <h3>💼 Experience</h3>
-          <div class="job">
-            <h4>Full Stack Web Developer (Freelance)</h4>
-            <div class="meta">Self-Employed · 2022 – Present</div>
-            <ul class="bullets">
-              <li>Developed 15+ production-ready web applications using React, Node.js, and AI tool integration.</li>
-              <li>Built responsive UIs with modern CSS3 animations and HTML5 semantics for 100% cross-device compatibility.</li>
-              <li>Designed and optimized <span class="term-link" data-term="PostgreSQL">PostgreSQL</span> & <span class="term-link" data-term="MySQL">MySQL</span> databases with complex queries and indexing strategies.</li>
-              <li>Created <span class="term-link" data-term="Python">Python</span> <span class="term-link" data-term="Automation">automation</span> scripts for web scraping, data processing, and system integration.</li>
-              <li>Deployed applications on Vercel & VPS with 30-40% performance optimization and zero-downtime updates.</li>
-            </ul>
-          </div>
-
-          <div class="job">
-            <h4>Forex Trading & Market Analysis</h4>
-            <div class="meta">Independent · 2022 – Present</div>
-            <ul class="bullets">
-              <li>3+ years of hands-on forex trading with focus on technical analysis and systematic strategies.</li>
-              <li>Developed trading <span class="term-link" data-term="Automation">automation</span> scripts using Python for order execution and market monitoring.</li>
-              <li>Implemented risk management protocols ensuring consistent performance across market conditions.</li>
-            </ul>
-          </div>
-
-          <div class="job">
-            <h4>Monitoring Executive</h4>
-            <div class="meta">Hindustan Wellness · July – Sept 2025</div>
-            <ul class="bullets">
-              <li>Real-time system monitoring and workflow tracking via integrated management dashboards.</li>
-              <li>Generated comprehensive performance reports and analytics for stakeholder insights.</li>
-            </ul>
+            <div class="job-icon"><i class="fas fa-book"></i></div>
+            <div class="job-content">
+              <h4>12th Grade (CBSE)</h4>
+              <div class="meta">RPS Sr. Sec. School · 2018 · 74.6%</div>
+            </div>
           </div>
         </section>
 
         <section class="section-card">
-          <h3>🚀 Featured Projects</h3>
+          <h3><i class="fas fa-briefcase"></i> Experience</h3>
+          <div class="job">
+            <div class="job-icon"><i class="fas fa-laptop-code"></i></div>
+            <div class="job-content">
+              <h4>Full Stack Web Developer (Freelance)</h4>
+              <div class="meta">Self-Employed · 2022 – Present</div>
+              <ul class="bullets">
+                <li>Developed 15+ production-ready web applications using React, Node.js, and AI tool integration.</li>
+                <li>Built responsive UIs with modern CSS3 animations and HTML5 semantics for 100% cross-device compatibility.</li>
+                <li>Designed and optimized <span class="term-link" data-term="PostgreSQL"><i class="fas fa-database"></i> PostgreSQL</span> & <span class="term-link" data-term="MySQL"><i class="fas fa-database"></i> MySQL</span> databases with complex queries and indexing strategies.</li>
+                <li>Created <span class="term-link" data-term="Python"><i class="fab fa-python"></i> Python</span> <span class="term-link" data-term="Automation"><i class="fas fa-cog"></i> automation</span> scripts for web scraping, data processing, and system integration.</li>
+                <li>Deployed applications on Vercel & VPS with 30-40% performance optimization and zero-downtime updates.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="job">
+            <div class="job-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="job-content">
+              <h4>Forex Trading & Market Analysis</h4>
+              <div class="meta">Independent · 2022 – Present</div>
+              <ul class="bullets">
+                <li>3+ years of hands-on forex trading with focus on technical analysis and systematic strategies.</li>
+                <li>Developed trading <span class="term-link" data-term="Automation"><i class="fas fa-cog"></i> automation</span> scripts using Python for order execution and market monitoring.</li>
+                <li>Implemented risk management protocols ensuring consistent performance across market conditions.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="job">
+            <div class="job-icon"><i class="fas fa-headset"></i></div>
+            <div class="job-content">
+              <h4>Monitoring Executive</h4>
+              <div class="meta">Hindustan Wellness · July – Sept 2025</div>
+              <ul class="bullets">
+                <li>Real-time system monitoring and workflow tracking via integrated management dashboards.</li>
+                <li>Generated comprehensive performance reports and analytics for stakeholder insights.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card">
+          <h3><i class="fas fa-rocket"></i> Featured Projects</h3>
           <div class="project-grid">
             <div class="project-tile">
-              <span class="badge">⚡ AI-Integrated</span>
-              <h4>Body Fuel AI</h4>
+              <span class="badge"><i class="fas fa-brain"></i> AI-Integrated</span>
+              <div class="project-header">
+                <i class="fas fa-image project-icon"></i>
+                <h4>Body Fuel AI</h4>
+              </div>
               <p>AI-powered calorie detection from food images. Real-time health metrics tracking with personalized recommendations using vision APIs.</p>
               <a class="project-link" href="https://body-fuel-ai.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 View Live
+                <i class="fas fa-arrow-right"></i> View Live
               </a>
             </div>
 
             <div class="project-tile">
-              <span class="badge">⚡ AI-Integrated</span>
-              <h4>FinTrack AI</h4>
+              <span class="badge"><i class="fas fa-brain"></i> AI-Integrated</span>
+              <div class="project-header">
+                <i class="fas fa-chart-pie project-icon"></i>
+                <h4>FinTrack AI</h4>
+              </div>
               <p>Intelligent expense tracker with AI-powered spending analysis, smart budget optimization, and anomaly detection.</p>
               <a class="project-link" href="https://fintrack-ai-one.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 View Live
+                <i class="fas fa-arrow-right"></i> View Live
               </a>
             </div>
 
             <div class="project-tile">
-              <h4>KisanYantra</h4>
+              <div class="project-header">
+                <i class="fas fa-tractor project-icon"></i>
+                <h4>KisanYantra</h4>
+              </div>
               <p>Agricultural equipment rental platform connecting farmers with equipment owners. Full-stack application with booking system and reviews.</p>
               <a class="project-link" href="https://kisanyantra-ten.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 View Live
+                <i class="fas fa-arrow-right"></i> View Live
               </a>
             </div>
 
             <div class="project-tile">
-              <h4>Nexus Shop</h4>
+              <div class="project-header">
+                <i class="fas fa-shopping-cart project-icon"></i>
+                <h4>Nexus Shop</h4>
+              </div>
               <p>Modern e-commerce template with product filtering, cart management, and checkout. Fully responsive design with smooth animations.</p>
               <a class="project-link" href="https://nexus-shop-9wgj.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 View Demo
+                <i class="fas fa-arrow-right"></i> View Demo
               </a>
             </div>
           </div>
         </section>
 
         <section class="section-card">
-          <h3>🎯 Core Expertise</h3>
+          <h3><i class="fas fa-target"></i> Core Expertise</h3>
           <ul class="bullets">
-            <li><strong>Full Stack Web Development:</strong> React/JavaScript frontend, Node.js/Express backend, and database design with PostgreSQL/MySQL for scalable applications.</li>
-            <li><strong>AI Tool Integration:</strong> Integrating modern AI services (GPT, Vision APIs, LLMs) into web apps for intelligent features and enhanced user experience.</li>
-            <li><strong><span class="term-link" data-term="Python">Python</span> <span class="term-link" data-term="Automation">Automation</span>:</strong> Advanced scripting for web scraping, data processing, trading automation, and system integration tasks.</li>
-            <li><strong>Responsive Design:</strong> Cross-device optimization with CSS3 animations, flexbox, grid, and mobile-first approach ensuring perfect display everywhere.</li>
-            <li><strong>Deployment & DevOps:</strong> Vercel, Netlify, VPS deployment, domain management, SSL certificates, and performance monitoring for 30-40% faster load times.</li>
+            <li><strong><i class="fas fa-code"></i> Full Stack Web Development:</strong> React/JavaScript frontend, Node.js/Express backend, and database design with PostgreSQL/MySQL for scalable applications.</li>
+            <li><strong><i class="fas fa-robot"></i> AI Tool Integration:</strong> Integrating modern AI services (GPT, Vision APIs, LLMs) into web apps for intelligent features and enhanced user experience.</li>
+            <li><strong><i class="fas fa-cog"></i> <span class="term-link" data-term="Python"><i class="fab fa-python"></i> Python</span> <span class="term-link" data-term="Automation"><i class="fas fa-cog"></i> Automation</span>:</strong> Advanced scripting for web scraping, data processing, trading automation, and system integration tasks.</li>
+            <li><strong><i class="fas fa-mobile-alt"></i> Responsive Design:</strong> Cross-device optimization with CSS3 animations, flexbox, grid, and mobile-first approach ensuring perfect display everywhere.</li>
+            <li><strong><i class="fas fa-cloud"></i> Deployment & DevOps:</strong> Vercel, Netlify, VPS deployment, domain management, SSL certificates, and performance monitoring for 30-40% faster load times.</li>
           </ul>
         </section>
       </main>
@@ -847,8 +1057,25 @@
       const closeBtn = document.getElementById('closeModal');
       const triggers = document.querySelectorAll('[data-term]');
 
+      const skillIcons = {
+        "Python": '<i class="fab fa-python"></i>',
+        "JavaScript": '<i class="fab fa-js"></i>',
+        "React": '<i class="fab fa-react"></i>',
+        "Node.js": '<i class="fab fa-node"></i>',
+        "PostgreSQL": '<i class="fas fa-database"></i>',
+        "MySQL": '<i class="fas fa-database"></i>',
+        "Automation": '<i class="fas fa-cog"></i>',
+        "AI Integration": '<i class="fas fa-brain"></i>',
+        "HTML": '<i class="fab fa-html5"></i>',
+        "CSS": '<i class="fab fa-css3"></i>',
+        "Express": '<i class="fas fa-server"></i>',
+        "API Development": '<i class="fas fa-plug"></i>',
+        "Deployment": '<i class="fas fa-cloud"></i>',
+        "Responsive Design": '<i class="fas fa-mobile-alt"></i>'
+      };
+
       function openModal(term) {
-        titleEl.textContent = term;
+        titleEl.innerHTML = `${skillIcons[term] || '<i class="fas fa-code"></i>'} ${term}`;
         descEl.textContent = definitions[term] || "No description available.";
         modal.classList.add('active');
       }
