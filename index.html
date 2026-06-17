@@ -1,180 +1,260 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Sachin Kumar — Resume</title>
-<style>
-  :root{
-    --deep: #3B1505;    
-    --dark: #7A280A;    
-    --primary: #A54014; 
-    --amber: #D05E1B;   
-    --glow: #F18A3A;    
-    --muted: rgba(255,235,225,0.90);
-    --white: #fff;
-    --card-border: rgba(255,255,255,0.1);
-    --maxw: 1000px;
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  }
-
-  html,body{
-    height:100%; margin:0; 
-    background: radial-gradient(circle at top center, #5e2208 0%, var(--deep) 70%, #1a0800 100%);
-    color:var(--white); 
-    -webkit-font-smoothing:antialiased; 
-    overflow-x: hidden;
-  }
-  *{box-sizing:border-box}
-
-  #rippleCanvas {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 0; pointer-events: none; mix-blend-mode: screen; 
-  }
-
-  .page{
-    position:relative; min-height:100vh; display:flex;
-    align-items:flex-start; justify-content:center; padding:44px 18px 80px;
-    z-index: 1;
-  }
-  
-  .resume-card{
-    width:100%; max-width:var(--maxw); border-radius:16px; 
-    border:1px solid var(--card-border);
-    background: rgba(59, 21, 5, 0.5); 
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    box-shadow:0 30px 80px rgba(0,0,0,0.6); 
-    overflow:hidden; display:grid; grid-template-columns:320px 1fr; gap:26px; padding:26px;
-    position:relative;
-  }
-  .resume-card > *{position:relative; z-index:2}
-  @media (max-width:900px){ .resume-card { grid-template-columns:1fr; padding:18px } }
-
-  .sidebar{padding:6px 4px}
-  .identity{display:flex;gap:14px;align-items:center}
-  .avatar{width:92px;height:92px;border-radius:14px;background:linear-gradient(135deg,var(--glow),var(--primary));display:flex;align-items:center;justify-content:center;font-weight:800;color:#0a0a0a;font-size:28px;box-shadow:0 12px 36px rgba(165,64,20,0.12);}
-  .name-block h1{margin:0;font-size:20px;color:var(--white)}
-  .name-block .tag{color:var(--muted);font-size:13px;margin-top:6px}
-  
-  .contact{margin-top:18px;font-size:14px;color:var(--muted);line-height:1.6}
-  .contact a{color:var(--white);text-decoration:none; border-bottom: 1px solid transparent; transition: 0.2s;}
-  .contact a:hover{border-color: var(--glow);}
-  
-  .section{margin-top:22px}
-  .section h3{margin:0 0 10px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:1px}
-  
-  .skills{display:flex;flex-wrap:wrap;gap:8px}
-  
-  .skill, .term-link {
-    background: rgba(255,255,255,0.07); padding:6px 10px; border-radius:999px; 
-    font-size:13px; border:1px solid rgba(255,255,255,0.05); 
-    transition: all 0.2s ease; cursor: pointer; position: relative;
-  }
-  .skill:hover, .term-link:hover {
-    background: rgba(255,255,255,0.15); border-color: var(--glow);
-    color: var(--glow); transform: translateY(-1px);
-  }
-  .term-link {
-    display: inline-block; padding: 2px 6px; border-radius: 4px; margin: 0 2px;
-    border-bottom: 1px dashed rgba(255,255,255,0.3);
-  }
-
-  .main{padding:4px 4px}
-  .hero-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:8px}
-  .summary{font-size:15px;color:var(--muted);line-height:1.6;max-width:720px}
-  
-  .print-btn{background:linear-gradient(180deg,var(--primary),var(--amber));color:#170700;font-weight:800;padding:10px 12px;border-radius:12px;border:none;cursor:pointer;box-shadow:0 12px 28px rgba(241,138,58,0.12); white-space:nowrap;}
-  .print-btn:hover{ transform: translateY(-2px); box-shadow: 0 15px 30px rgba(241,138,58,0.3); }
-
-  .section-card{margin-top:18px;padding:14px;border-radius:12px;background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05)}
-  .section-card h3{margin:0 0 12px; color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:1px}
-  ul.bullets{margin:10px 0 0;padding-left:18px}
-  ul.bullets li{margin:6px 0;color:var(--white);line-height:1.5}
-  .job h4{margin:0 0 2px; font-size:15px; color:var(--white)}
-  .job + .job{margin-top:14px}
-  .meta{font-size:13px; color:var(--muted)}
-
-  /* --- PROJECT CARDS --- */
-  .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px}
-  @media(max-width:600px){.project-grid{grid-template-columns:1fr}}
-  .project-tile{
-    border-radius:10px; padding:14px;
-    background: rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.07);
-    transition: all 0.2s ease;
-  }
-  .project-tile:hover{
-    background: rgba(241,138,58,0.08);
-    border-color: rgba(241,138,58,0.4);
-    transform: translateY(-2px);
-  }
-  .project-tile h4{margin:0 0 6px; font-size:14px; color:var(--white)}
-  .project-tile p{margin:0 0 10px; font-size:13px; color:var(--muted); line-height:1.5}
-  .project-tile .ai-badge{
-    display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px;
-    background: rgba(241,138,58,0.15); border:1px solid rgba(241,138,58,0.4); color:var(--glow);
-    margin-bottom:8px;
-  }
-  .project-link{
-    display:inline-flex; align-items:center; gap:4px;
-    font-size:12px; color:var(--glow); text-decoration:none;
-    border-bottom:1px solid transparent; transition:0.2s;
-  }
-  .project-link:hover{border-color:var(--glow)}
-
-  /* --- MODAL --- */
-  .modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7); 
-    z-index: 100; 
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
-    backdrop-filter: blur(4px);
-  }
-  .modal-overlay.active { opacity: 1; visibility: visible; }
-  .modal-card {
-    width: 90%; max-width: 500px;
-    background: rgba(50, 15, 5, 0.95); 
-    border: 1px solid var(--glow);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-    border-radius: 16px; padding: 30px;
-    transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-  }
-  .modal-overlay.active .modal-card { transform: scale(1); }
-  .modal-title { font-size: 22px; color: var(--glow); margin: 0 0 12px 0; font-weight: 700; }
-  .modal-desc { font-size: 16px; line-height: 1.6; color: var(--muted); }
-  .close-modal {
-    position: absolute; top: 15px; right: 15px;
-    background: none; border: none; color: var(--white);
-    font-size: 24px; cursor: pointer; opacity: 0.7;
-  }
-  .close-modal:hover { opacity: 1; color: var(--glow); }
-
-  @media print {
-    #rippleCanvas, .print-btn, .modal-overlay { display:none !important; }
-    html, body, .page { 
-      height: auto !important; min-height: 0 !important;
-      width: 100% !important; overflow: visible !important; 
-      margin: 0 !important; padding: 0 !important;
-      background: #fff !important; color: #000 !important; 
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Sachin Kumar — AI-focused freelance developer & BCA student. Portfolio showcasing web development, AI projects, automation, and cybersecurity expertise." />
+  <meta name="keywords" content="developer, AI, freelance, web development, Python, Node.js, cybersecurity" />
+  <meta name="author" content="Sachin Kumar" />
+  <meta property="og:title" content="Sachin Kumar — Resume" />
+  <meta property="og:description" content="AI-focused freelance developer & BCA student with expertise in web development, automation, and AI integration." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#A54014" />
+  <title>Sachin Kumar — Resume</title>
+  <style>
+    :root{
+      --deep: #3B1505;    
+      --dark: #7A280A;    
+      --primary: #A54014; 
+      --amber: #D05E1B;   
+      --glow: #F18A3A;    
+      --muted: rgba(255,235,225,0.90);
+      --white: #fff;
+      --card-border: rgba(255,255,255,0.1);
+      --maxw: 1000px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
-    .resume-card { 
-      position: static !important; width: 100% !important; max-width: 100% !important;
-      height: auto !important; overflow: visible !important; display: block !important;
-      box-shadow: none !important; border: none !important; 
-      background: none !important; backdrop-filter: none !important; padding: 0 !important;
+
+    html,body{
+      height:100%; margin:0; 
+      background: radial-gradient(circle at top center, #5e2208 0%, var(--deep) 70%, #1a0800 100%);
+      color:var(--white); 
+      -webkit-font-smoothing:antialiased; 
+      overflow-x: hidden;
     }
-    .sidebar, .main { width: 100% !important; display: block !important; page-break-inside: auto; }
-    .sidebar { border-bottom: 2px solid #eee; margin-bottom: 20px; padding-bottom: 20px; }
-    * { color: #000 !important; text-shadow: none !important; }
-    .skill, .term-link { border: 1px solid #333 !important; background: none !important; }
-    .section-card { border: 1px solid #ccc !important; margin-bottom: 15px; page-break-inside: avoid; }
-    a { text-decoration: none !important; color: #000 !important; }
-    .project-tile { border: 1px solid #ccc !important; background: none !important; }
-    .ai-badge { border: 1px solid #333 !important; background: none !important; }
-  }
-</style>
+    *{box-sizing:border-box}
+
+    #rippleCanvas {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0; pointer-events: none; mix-blend-mode: screen; 
+    }
+
+    .page{
+      position:relative; min-height:100vh; display:flex;
+      align-items:flex-start; justify-content:center; padding:44px 18px 80px;
+      z-index: 1;
+    }
+    
+    .resume-card{
+      width:100%; max-width:var(--maxw); border-radius:16px; 
+      border:1px solid var(--card-border);
+      background: rgba(59, 21, 5, 0.5); 
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      box-shadow:0 30px 80px rgba(0,0,0,0.6); 
+      overflow:hidden; display:grid; grid-template-columns:320px 1fr; gap:26px; padding:26px;
+      position:relative;
+    }
+    .resume-card > *{position:relative; z-index:2}
+    @media (max-width:900px){ .resume-card { grid-template-columns:1fr; padding:18px } }
+
+    .sidebar{padding:6px 4px}
+    .identity{display:flex;gap:14px;align-items:center}
+    .avatar{
+      width:92px;height:92px;border-radius:14px;
+      background:linear-gradient(135deg,var(--glow),var(--primary));
+      display:flex;align-items:center;justify-content:center;
+      font-weight:800;font-size:28px;color:#0a0a0a;
+    }
+    .name-block h1{margin:0;font-size:20px;color:var(--white)}
+    .name-block .tag{color:var(--muted);font-size:13px;margin-top:6px}
+    
+    .contact{margin-top:18px;font-size:14px;color:var(--muted);line-height:1.6}
+    .contact a{color:var(--white);text-decoration:none; border-bottom: 1px solid transparent; transition: 0.2s;}
+    .contact a:hover{border-color: var(--glow);}
+    
+    .section{margin-top:22px}
+    .section h3{margin:0 0 10px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+    
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    
+    .skill, .term-link {
+      background: rgba(255,255,255,0.07); padding:6px 10px; border-radius:999px; 
+      font-size:13px; border:1px solid rgba(255,255,255,0.05); 
+      transition: all 0.2s ease; cursor: pointer; position: relative;
+    }
+    .skill:hover, .term-link:hover {
+      background: rgba(255,255,255,0.15); border-color: var(--glow);
+      color: var(--glow); transform: translateY(-1px);
+    }
+    .term-link {
+      display: inline-block; padding: 2px 6px; border-radius: 4px; margin: 0 2px;
+      border-bottom: 1px dashed rgba(255,255,255,0.3);
+    }
+
+    .main{padding:4px 4px}
+    .hero-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:8px;flex-wrap:wrap}
+    .summary{font-size:15px;color:var(--muted);line-height:1.6;max-width:720px}
+    
+    .button-group{display:flex;gap:10px;flex-wrap:wrap}
+    .print-btn, .download-btn{
+      background:linear-gradient(180deg,var(--primary),var(--amber));
+      color:#170700;font-weight:800;padding:10px 14px;border-radius:12px;
+      border:none;cursor:pointer;box-shadow:0 12px 28px rgba(241,138,58,0.2);
+      transition:all 0.2s ease;font-size:13px;white-space:nowrap;
+    }
+    .print-btn:hover, .download-btn:hover{ 
+      transform: translateY(-2px); 
+      box-shadow: 0 15px 30px rgba(241,138,58,0.3); 
+    }
+
+    .section-card{margin-top:18px;padding:14px;border-radius:12px;background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05)}
+    .section-card h3{margin:0 0 12px; color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:1px}
+    ul.bullets{margin:10px 0 0;padding-left:18px}
+    ul.bullets li{margin:6px 0;color:var(--white);line-height:1.5}
+    .job h4{margin:0 0 2px; font-size:15px; color:var(--white)}
+    .job + .job{margin-top:14px}
+    .meta{font-size:13px; color:var(--muted)}
+
+    /* --- PROJECT CARDS --- */
+    .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px}
+    @media(max-width:600px){.project-grid{grid-template-columns:1fr}}
+    .project-tile{
+      border-radius:10px; padding:14px;
+      background: rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.07);
+      transition: all 0.2s ease;
+    }
+    .project-tile:hover{
+      background: rgba(241,138,58,0.08);
+      border-color: rgba(241,138,58,0.4);
+      transform: translateY(-2px);
+    }
+    .project-tile h4{margin:0 0 6px; font-size:14px; color:var(--white)}
+    .project-tile p{margin:0 0 10px; font-size:13px; color:var(--muted); line-height:1.5}
+    .project-tile .ai-badge{
+      display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px;
+      background: rgba(241,138,58,0.15); border:1px solid rgba(241,138,58,0.4); color:var(--glow);
+      margin-bottom:8px;
+    }
+    .project-link{
+      display:inline-flex; align-items:center; gap:4px;
+      font-size:12px; color:var(--glow); text-decoration:none;
+      border-bottom:1px solid transparent; transition:0.2s;
+    }
+    .project-link:hover{border-color:var(--glow)}
+
+    /* --- MODAL --- */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7); 
+      z-index: 100; 
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-card {
+      width: 90%; max-width: 500px;
+      background: rgba(50, 15, 5, 0.95); 
+      border: 1px solid var(--glow);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      border-radius: 16px; padding: 30px;
+      transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+    .modal-overlay.active .modal-card { transform: scale(1); }
+    .modal-title { font-size: 22px; color: var(--glow); margin: 0 0 12px 0; font-weight: 700; }
+    .modal-desc { font-size: 16px; line-height: 1.6; color: var(--muted); }
+    .close-modal {
+      position: absolute; top: 15px; right: 15px;
+      background: none; border: none; color: var(--white);
+      font-size: 24px; cursor: pointer; opacity: 0.7;
+    }
+    .close-modal:hover { opacity: 1; color: var(--glow); }
+
+    /* ★ ENHANCED PRINT STYLES FOR COLOR PRESERVATION */
+    @media print {
+      @page {
+        size: A4;
+        margin: 10mm;
+      }
+      
+      #rippleCanvas, .download-btn, .modal-overlay { display:none !important; }
+      
+      html, body, .page { 
+        height: auto !important; min-height: 0 !important;
+        width: 100% !important; overflow: visible !important; 
+        margin: 0 !important; padding: 0 !important;
+        background: linear-gradient(circle at top center, #5e2208 0%, #3B1505 70%, #1a0800 100%) !important;
+        color: var(--white) !important; 
+      }
+      
+      .resume-card { 
+        position: static !important; width: 100% !important; max-width: 100% !important;
+        height: auto !important; overflow: visible !important; display: grid !important;
+        box-shadow: none !important; border: none !important; 
+        background: transparent !important; backdrop-filter: none !important; 
+        padding: 0 !important; gap: 20px;
+      }
+      
+      .sidebar, .main { 
+        width: 100% !important; 
+        display: block !important; 
+        page-break-inside: avoid;
+      }
+      
+      .sidebar { 
+        border-bottom: 2px solid rgba(255,255,255,0.2); 
+        margin-bottom: 15px; 
+        padding-bottom: 15px; 
+      }
+      
+      /* Preserve text colors in print */
+      * { 
+        color: var(--white) !important; 
+        text-shadow: none !important; 
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--white) !important;
+      }
+      
+      .skill, .term-link { 
+        border: 1px solid rgba(255,255,255,0.3) !important; 
+        background: rgba(255,255,255,0.05) !important;
+        color: var(--white) !important;
+      }
+      
+      .section-card { 
+        border: 1px solid rgba(255,255,255,0.2) !important; 
+        background: rgba(255,255,255,0.02) !important;
+        margin-bottom: 12px; 
+        page-break-inside: avoid; 
+      }
+      
+      a { 
+        text-decoration: underline !important; 
+        color: var(--glow) !important; 
+      }
+      
+      .project-tile { 
+        border: 1px solid rgba(255,255,255,0.2) !important; 
+        background: rgba(255,255,255,0.03) !important;
+      }
+      
+      .ai-badge { 
+        border: 1px solid rgba(241,138,58,0.4) !important; 
+        background: rgba(241,138,58,0.1) !important;
+        color: var(--glow) !important;
+      }
+      
+      .print-btn { display: none !important; }
+      
+      .meta, .contact, .section h3, .muted {
+        color: rgba(255,235,225,0.9) !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -182,7 +262,7 @@
 
   <div class="modal-overlay" id="infoModal">
     <div class="modal-card">
-      <button class="close-modal" id="closeModal">&times;</button>
+      <button class="close-modal" id="closeModal" aria-label="Close modal">&times;</button>
       <h2 class="modal-title" id="modalTitle">Title</h2>
       <p class="modal-desc" id="modalDesc">Description goes here.</p>
     </div>
@@ -192,71 +272,102 @@
     <div class="resume-card" id="resume" role="main">
       <aside class="sidebar">
         <div class="identity">
-          <div class="avatar">SK</div>
-          <div class="name-block"><h1>Sachin Kumar</h1><div class="tag">AI-focused Freelance Developer · BCA Student</div></div>
+          <div class="avatar" aria-label="SK initials">SK</div>
+          <div class="name-block">
+            <h1>Sachin Kumar</h1>
+            <div class="tag">AI-focused Freelance Developer · BCA Student</div>
+          </div>
         </div>
 
         <div class="contact section">
           <div><strong>Phone</strong></div>
-          <div><a href="tel:+918930017169">+91 8930017169</a></div>
+          <div><a href="tel:+918930017169" aria-label="Call phone number">+91 8930017169</a></div>
           <div style="margin-top:8px"><strong>Email</strong></div>
-          <div><a href="mailto:thesachinmehra@gmail.com">thesachinmehra@gmail.com</a></div>
+          <div><a href="mailto:thesachinmehra@gmail.com" aria-label="Send email">thesachinmehra@gmail.com</a></div>
           <div style="margin-top:8px"><strong>Location</strong></div>
           <div>VPO Kadma, Charkhi Dadri, Haryana</div>
           <div style="margin-top:8px"><strong>GitHub</strong></div>
-          <div><a href="https://github.com/sachinkr89" target="_blank">github.com/sachinkr89</a></div>
+          <div><a href="https://github.com/sachinkr89" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">github.com/sachinkr89</a></div>
         </div>
 
-        <div class="section"><h3>Skills</h3><div class="skills">
-          <div class="skill" data-term="Python">Python</div>
-          <div class="skill" data-term="HTML">HTML</div>
-          <div class="skill" data-term="CSS">CSS</div>
-          <div class="skill" data-term="JavaScript">JavaScript</div>
-          <div class="skill" data-term="Node.js">Node.js</div>
-          <div class="skill" data-term="PHP">PHP</div>
-          <div class="skill" data-term="Hosting">Hosting</div>
-          <div class="skill" data-term="MS Office">MS Office</div>
-          <div class="skill" data-term="Cybersecurity">Cybersecurity</div>
-          <div class="skill" data-term="Automation">Automation</div>
-          <div class="skill" data-term="AI Integration">AI Integration</div>
-        </div></div>
+        <div class="section">
+          <h3>Skills</h3>
+          <div class="skills">
+            <div class="skill" data-term="Python">Python</div>
+            <div class="skill" data-term="HTML">HTML</div>
+            <div class="skill" data-term="CSS">CSS</div>
+            <div class="skill" data-term="JavaScript">JavaScript</div>
+            <div class="skill" data-term="Node.js">Node.js</div>
+            <div class="skill" data-term="PHP">PHP</div>
+            <div class="skill" data-term="Hosting">Hosting</div>
+            <div class="skill" data-term="MS Office">MS Office</div>
+            <div class="skill" data-term="Cybersecurity">Cybersecurity</div>
+            <div class="skill" data-term="Automation">Automation</div>
+            <div class="skill" data-term="AI Integration">AI Integration</div>
+          </div>
+        </div>
 
-        <div class="section"><h3>Languages</h3><div style="color:var(--muted);font-size:14px">Hindi, English</div></div>
-        <div class="section"><h3>Interests</h3><div style="color:var(--muted);font-size:14px">AI tools · Cybersecurity · Continuous learning</div></div>
+        <div class="section">
+          <h3>Languages</h3>
+          <div style="color:var(--muted);font-size:14px">Hindi, English</div>
+        </div>
+        
+        <div class="section">
+          <h3>Interests</h3>
+          <div style="color:var(--muted);font-size:14px">AI tools · Cybersecurity · Continuous learning</div>
+        </div>
       </aside>
 
       <main class="main">
         <div class="hero-head">
-          <p class="summary">AI-focused freelance developer and BCA student with hands-on experience in web development, automation, and building efficient solutions using modern tools. Skilled in <span class="term-link" data-term="Python">Python</span>, <span class="term-link" data-term="PHP">PHP</span>, MS Office, basic <span class="term-link" data-term="Cybersecurity">cybersecurity</span> concepts, and deploying AI-integrated web applications on Vercel.</p>
-          <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+          <p class="summary">
+            AI-focused freelance developer and BCA student with hands-on experience in web development, automation, and building efficient solutions using modern tools. Skilled in Python, JavaScript, Node.js, and AI integration. Passionate about cybersecurity and creating intelligent web applications.
+          </p>
+          <div class="button-group">
+            <button class="print-btn" onclick="window.print()" aria-label="Print or save as PDF">Print / Save PDF</button>
+            <button class="download-btn" id="downloadBtn" aria-label="Download resume as PDF">Download Resume</button>
+          </div>
         </div>
 
         <section class="section-card">
           <h3>Education</h3>
-          <div class="job"><h4>BCA — DPGITM College, Gurgaon</h4><div class="meta">2022 – Present (Pursuing)</div></div>
-          <div class="job"><h4>12th — RPS Sr. Sec. School, Khatod</h4><div class="meta">CBSE · Completed 2018 · 74.6%</div></div>
-          <div class="job"><h4>10th — Hind High School, Kadma</h4><div class="meta">HBSE · Completed 2016 · 79.4%</div></div>
+          <div class="job">
+            <h4>BCA — DPGITM College, Gurgaon</h4>
+            <div class="meta"><time>2022 – Present</time> (Pursuing)</div>
+          </div>
+          <div class="job">
+            <h4>12th — RPS Sr. Sec. School, Khatod</h4>
+            <div class="meta">CBSE · Completed <time>2018</time> · 74.6%</div>
+          </div>
+          <div class="job">
+            <h4>10th — Hind High School, Kadma</h4>
+            <div class="meta">HBSE · Completed <time>2016</time> · 79.4%</div>
+          </div>
         </section>
 
         <section class="section-card">
           <h3>Experience</h3>
-          <div class="job"><h4>Freelance Web Developer</h4><div class="meta">Self-Employed · 2022 – Present</div>
+          <div class="job">
+            <h4>Freelance Web Developer</h4>
+            <div class="meta">Self-Employed · <time>2022 – Present</time></div>
             <ul class="bullets">
-              <li>Built template websites and custom layouts for clients.</li>
-              <li>Fixed bugs and improved performance on small projects.</li>
-              <li>Managed hosting, deployment and domains.</li>
-              <li>Wrote <span class="term-link" data-term="Automation">automation</span> scripts using Python.</li>
+              <li>Built template websites and custom layouts for clients with responsive design.</li>
+              <li>Fixed bugs and improved performance on small to medium-sized projects.</li>
+              <li>Managed hosting, deployment, domain configuration, and SSL certificates.</li>
+              <li>Wrote <span class="term-link" data-term="Automation">automation</span> scripts using Python for repetitive tasks.</li>
             </ul>
           </div>
-          <div class="job"><h4>Monitoring Executive</h4><div class="meta">Hindustan Wellness · Gurgaon · July 2025 – Sept 2025</div>
+          <div class="job">
+            <h4>Monitoring Executive</h4>
+            <div class="meta">Hindustan Wellness · Gurgaon · <time>July 2025 – Sept 2025</time></div>
             <ul class="bullets">
-              <li>Monitored team workflow via CCTV systems.</li>
-              <li>Prepared daily activity reports.</li>
+              <li>Monitored team workflow via CCTV systems and real-time dashboards.</li>
+              <li>Prepared detailed daily activity reports and performance metrics.</li>
             </ul>
           </div>
         </section>
 
-        <!-- ★ NEW: AI Projects Section -->
+        <!-- ★ AI Projects Section -->
         <section class="section-card">
           <h3>AI-Powered Projects <span style="font-size:11px;color:var(--glow);font-weight:400;text-transform:none;letter-spacing:0">(Live on Vercel)</span></h3>
           <div class="project-grid">
@@ -264,8 +375,8 @@
             <div class="project-tile">
               <span class="ai-badge">⚡ AI-Powered</span>
               <h4>Body Fuel AI</h4>
-              <p>Detects calories and nutrients from food inputs. Tracks daily health goals and body metrics using AI analysis.</p>
-              <a class="project-link" href="https://body-fuel-ai.vercel.app" target="_blank">
+              <p>Detects calories and nutrients from food inputs using AI vision. Tracks daily health goals and body metrics with personalized insights.</p>
+              <a class="project-link" href="https://body-fuel-ai.vercel.app" target="_blank" rel="noopener noreferrer">
                 🔗 body-fuel-ai.vercel.app
               </a>
             </div>
@@ -273,24 +384,24 @@
             <div class="project-tile">
               <span class="ai-badge">⚡ AI-Powered</span>
               <h4>FinTrack AI</h4>
-              <p>Tracks financial consumption and spending patterns. Uses AI to analyze habits and suggest budget insights.</p>
-              <a class="project-link" href="https://fintrack-ai-one.vercel.app" target="_blank">
+              <p>Intelligent financial tracker that analyzes spending patterns. Uses AI to suggest budget optimization and detect anomalies in expenses.</p>
+              <a class="project-link" href="https://fintrack-ai-one.vercel.app" target="_blank" rel="noopener noreferrer">
                 🔗 fintrack-ai-one.vercel.app
               </a>
             </div>
 
             <div class="project-tile">
               <h4>Nexus Shop</h4>
-              <p>A fully functional e-commerce website template with product listings, cart, and clean modern UI.</p>
-              <a class="project-link" href="https://nexus-shop-9wgj.vercel.app" target="_blank">
+              <p>Fully functional e-commerce platform with product listings, shopping cart, filtering, and seamless checkout experience.</p>
+              <a class="project-link" href="https://nexus-shop-9wgj.vercel.app" target="_blank" rel="noopener noreferrer">
                 🔗 nexus-shop-9wgj.vercel.app
               </a>
             </div>
 
             <div class="project-tile">
               <h4>KisanYantra</h4>
-              <p>A rental system for agriculture products, helping farmers access tools and equipment efficiently.</p>
-              <a class="project-link" href="https://kisanyantra-ten.vercel.app" target="_blank">
+              <p>Agriculture equipment rental system helping farmers access tools and machinery efficiently without upfront purchase costs.</p>
+              <a class="project-link" href="https://kisanyantra-ten.vercel.app" target="_blank" rel="noopener noreferrer">
                 🔗 kisanyantra-ten.vercel.app
               </a>
             </div>
@@ -300,11 +411,13 @@
 
         <section class="section-card">
           <h3>Security Project — LeafSec</h3>
-          <div class="job"><h4>Founder & Security Lead (2021)</h4>
+          <div class="job">
+            <h4>Founder & Security Lead</h4>
+            <div class="meta"><time>2021</time></div>
             <ul class="bullets">
-              <li>Offered basic website security assessments for developers.</li>
-              <li>Performed manual scans and <span class="term-link" data-term="Burp Suite">Burp Suite</span> testing (XSS, hijack vectors).</li>
-              <li>Delivered clear remediation reports to clients.</li>
+              <li>Offered comprehensive website security assessments and vulnerability reports for developers.</li>
+              <li>Performed manual penetration testing and <span class="term-link" data-term="Burp Suite">Burp Suite</span> analysis (XSS, CSRF, session hijacking vectors).</li>
+              <li>Delivered detailed remediation reports with actionable security recommendations.</li>
             </ul>
           </div>
         </section>
@@ -366,17 +479,17 @@
 /* --- KNOWLEDGE BASE MODAL --- */
 (function() {
   const definitions = {
-    "Python": "A high-level, general-purpose programming language known for its readability and vast ecosystem. I use it for automation scripts and backend logic.",
-    "PHP": "A popular general-purpose scripting language especially suited to web development. I use it to manage server-side logic and databases.",
-    "HTML": "The standard markup language for documents designed to be displayed in a web browser.",
-    "CSS": "Style sheet language used for describing the presentation of a document written in HTML, including layout, colors, and fonts.",
-    "JavaScript": "A programming language that enables interactive web pages. I use it for frontend logic, animations, and DOM manipulation.",
-    "Node.js": "A JavaScript runtime built on Chrome's V8 engine, allowing me to run JavaScript on the server side.",
-    "Hosting": "The service of providing storage space and access for websites. I have experience managing domains, cPanel, and deployments.",
-    "Cybersecurity": "The practice of protecting systems, networks, and programs from digital attacks. I focus on web vulnerability assessment.",
-    "Automation": "Using technology to perform tasks with reduced human assistance. I write scripts to automate repetitive web and data tasks.",
-    "Burp Suite": "A leading software for web security testing. I use it to intercept requests and analyze potential vulnerabilities like XSS.",
-    "MS Office": "Proficiency in Word, Excel, and PowerPoint for documentation, reporting, and data organization.",
+    "Python": "A high-level, general-purpose programming language known for its readability and vast ecosystem. I use it for automation scripts, web scraping, and backend logic.",
+    "PHP": "A popular general-purpose scripting language especially suited to web development. I use it to manage server-side logic and relational databases.",
+    "HTML": "The standard markup language for documents designed to be displayed in a web browser. Foundation of all web pages.",
+    "CSS": "Style sheet language used for describing the presentation of a document written in HTML, including layout, colors, fonts, and animations.",
+    "JavaScript": "A programming language that enables interactive web pages. I use it for frontend logic, animations, API calls, and DOM manipulation.",
+    "Node.js": "A JavaScript runtime built on Chrome's V8 engine, allowing me to run JavaScript on the server side for backend development.",
+    "Hosting": "The service of providing storage space and access for websites. I have experience managing domains, cPanel, VPS, and various deployments.",
+    "Cybersecurity": "The practice of protecting systems, networks, and programs from digital attacks. I focus on web vulnerability assessment and penetration testing.",
+    "Automation": "Using technology to perform tasks with reduced human assistance. I write scripts to automate repetitive web tasks and data processing.",
+    "Burp Suite": "A leading software for web security testing and penetration testing. I use it to intercept requests and analyze potential vulnerabilities like XSS, SQL injection, and CSRF.",
+    "MS Office": "Proficiency in Word, Excel, and PowerPoint for documentation, reporting, data analysis, and presentation creation.",
     "AI Integration": "Building web applications that connect to AI APIs for intelligent features like calorie detection, financial analysis, and smart recommendations."
   };
 
@@ -398,6 +511,35 @@
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 })();
+
+/* --- PDF DOWNLOAD FUNCTIONALITY --- */
+(function() {
+  const downloadBtn = document.getElementById('downloadBtn');
+  
+  downloadBtn.addEventListener('click', function() {
+    // Using html2pdf library for better color preservation
+    const element = document.getElementById('resume');
+    const opt = {
+      margin: 10,
+      filename: 'Sachin_Kumar_Resume.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, backgroundColor: '#1a0800' },
+      jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+    };
+    
+    // Check if html2pdf is available, if not fallback to print
+    if (typeof html2pdf !== 'undefined') {
+      html2pdf().set(opt).from(element).save();
+    } else {
+      // Fallback: Use print dialog
+      window.print();
+    }
+  });
+})();
 </script>
+
+<!-- Include html2pdf library for PDF download with colors -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 </body>
 </html>
