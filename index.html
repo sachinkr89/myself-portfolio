@@ -4,30 +4,30 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Sachin Kumar — AI-focused freelance developer & BCA student. Portfolio showcasing web development, AI projects, automation, and cybersecurity expertise." />
-  <meta name="keywords" content="developer, AI, freelance, web development, Python, Node.js, cybersecurity" />
+  <meta name="keywords" content="developer, AI, freelance, web development, Python, Node.js, cybersecurity, MERN" />
   <meta name="author" content="Sachin Kumar" />
   <meta property="og:title" content="Sachin Kumar — Resume" />
   <meta property="og:description" content="AI-focused freelance developer & BCA student with expertise in web development, automation, and AI integration." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#A54014" />
+  <meta name="theme-color" content="#FF6B35" />
   <title>Sachin Kumar — Resume</title>
   <style>
     :root{
-      --deep: #3B1505;    
-      --dark: #7A280A;    
-      --primary: #A54014; 
-      --amber: #D05E1B;   
-      --glow: #F18A3A;    
-      --muted: rgba(255,235,225,0.90);
+      --deep: #0F1419;    
+      --dark: #1A1F2E;    
+      --primary: #FF6B35; 
+      --accent: #FF8C42;   
+      --glow: #FFB347;    
+      --muted: rgba(255,240,220,0.85);
       --white: #fff;
-      --card-border: rgba(255,255,255,0.1);
+      --card-border: rgba(255,107,53,0.2);
       --maxw: 1000px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: "Inter", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     }
 
     html,body{
       height:100%; margin:0; 
-      background: radial-gradient(circle at top center, #5e2208 0%, var(--deep) 70%, #1a0800 100%);
+      background: linear-gradient(135deg, #0F1419 0%, #1A1F2E 50%, #2D1810 100%);
       color:var(--white); 
       -webkit-font-smoothing:antialiased; 
       overflow-x: hidden;
@@ -41,158 +41,164 @@
 
     .page{
       position:relative; min-height:100vh; display:flex;
-      align-items:flex-start; justify-content:center; padding:44px 18px 80px;
+      align-items:flex-start; justify-content:center; padding:40px 16px 60px;
       z-index: 1;
     }
     
     .resume-card{
-      width:100%; max-width:var(--maxw); border-radius:16px; 
-      border:1px solid var(--card-border);
-      background: rgba(59, 21, 5, 0.5); 
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      box-shadow:0 30px 80px rgba(0,0,0,0.6); 
-      overflow:hidden; display:grid; grid-template-columns:320px 1fr; gap:26px; padding:26px;
+      width:100%; max-width:var(--maxw); border-radius:20px; 
+      border:1.5px solid var(--card-border);
+      background: rgba(26, 31, 46, 0.7); 
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(255,107,53,0.15), 0 0 60px rgba(255,107,53,0.05); 
+      overflow:hidden; display:grid; grid-template-columns:300px 1fr; gap:28px; padding:28px;
       position:relative;
     }
     .resume-card > *{position:relative; z-index:2}
-    @media (max-width:900px){ .resume-card { grid-template-columns:1fr; padding:18px } }
+    @media (max-width:900px){ .resume-card { grid-template-columns:1fr; padding:20px; gap:20px } }
 
-    .sidebar{padding:6px 4px}
-    .identity{display:flex;gap:14px;align-items:center}
+    .sidebar{padding:4px 0}
+    .identity{display:flex;gap:16px;align-items:center;margin-bottom:6px}
     .avatar{
-      width:92px;height:92px;border-radius:14px;
-      background:linear-gradient(135deg,var(--glow),var(--primary));
+      width:80px;height:80px;border-radius:16px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       display:flex;align-items:center;justify-content:center;
-      font-weight:800;font-size:28px;color:#0a0a0a;
+      font-weight:900;font-size:32px;color:#0F1419;
+      box-shadow: 0 8px 24px rgba(255,107,53,0.25);
     }
-    .name-block h1{margin:0;font-size:20px;color:var(--white)}
-    .name-block .tag{color:var(--muted);font-size:13px;margin-top:6px}
+    .name-block h1{margin:0;font-size:22px;color:var(--white);font-weight:700}
+    .name-block .tag{
+      color:var(--muted);font-size:12px;margin-top:4px;
+      background: rgba(255,107,53,0.1);
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-block;
+    }
     
-    .contact{margin-top:18px;font-size:14px;color:var(--muted);line-height:1.6}
+    .contact{margin-top:16px;font-size:13px;color:var(--muted);line-height:1.8}
+    .contact-item{margin-bottom:10px}
+    .contact-label{color:var(--glow);font-weight:600;font-size:11px;text-transform:uppercase}
     .contact a{color:var(--white);text-decoration:none; border-bottom: 1px solid transparent; transition: 0.2s;}
-    .contact a:hover{border-color: var(--glow);}
+    .contact a:hover{color:var(--primary);border-color: var(--primary);}
     
-    .section{margin-top:22px}
-    .section h3{margin:0 0 10px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+    .section{margin-top:18px}
+    .section h3{margin:0 0 10px;color:var(--primary);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px}
     
-    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skills{display:flex;flex-wrap:wrap;gap:6px}
     
     .skill, .term-link {
-      background: rgba(255,255,255,0.07); padding:6px 10px; border-radius:999px; 
-      font-size:13px; border:1px solid rgba(255,255,255,0.05); 
+      background: rgba(255,107,53,0.12); 
+      padding:5px 10px; border-radius:8px; 
+      font-size:12px; border:1px solid rgba(255,107,53,0.25); 
       transition: all 0.2s ease; cursor: pointer; position: relative;
+      color: var(--white);
     }
     .skill:hover, .term-link:hover {
-      background: rgba(255,255,255,0.15); border-color: var(--glow);
-      color: var(--glow); transform: translateY(-1px);
+      background: rgba(255,107,53,0.25); 
+      border-color: var(--primary);
+      color: var(--primary); 
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255,107,53,0.2);
     }
     .term-link {
-      display: inline-block; padding: 2px 6px; border-radius: 4px; margin: 0 2px;
-      border-bottom: 1px dashed rgba(255,255,255,0.3);
+      display: inline-block; padding: 2px 6px; border-radius: 4px; margin: 0 1px;
+      border-bottom: 2px dashed rgba(255,107,53,0.4);
     }
 
-    .main{padding:4px 4px}
-    .hero-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:8px;flex-wrap:wrap}
-    .summary{font-size:15px;color:var(--muted);line-height:1.6;max-width:720px}
+    .main{padding:4px 0}
+    .summary{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:6px}
     
-    .button-group{display:flex;gap:10px;flex-wrap:wrap}
-    .print-btn, .download-btn{
-      background:linear-gradient(180deg,var(--primary),var(--amber));
-      color:#170700;font-weight:800;padding:10px 14px;border-radius:12px;
-      border:none;cursor:pointer;box-shadow:0 12px 28px rgba(241,138,58,0.2);
-      transition:all 0.2s ease;font-size:13px;white-space:nowrap;
-    }
-    .print-btn:hover, .download-btn:hover{ 
-      transform: translateY(-2px); 
-      box-shadow: 0 15px 30px rgba(241,138,58,0.3); 
-    }
-
-    .section-card{margin-top:18px;padding:14px;border-radius:12px;background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05)}
-    .section-card h3{margin:0 0 12px; color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:1px}
-    ul.bullets{margin:10px 0 0;padding-left:18px}
-    ul.bullets li{margin:6px 0;color:var(--white);line-height:1.5}
-    .job h4{margin:0 0 2px; font-size:15px; color:var(--white)}
-    .job + .job{margin-top:14px}
-    .meta{font-size:13px; color:var(--muted)}
+    .section-card{margin-top:16px;padding:16px;border-radius:14px;background:rgba(255,107,53,0.05); border:1px solid rgba(255,107,53,0.15)}
+    .section-card h3{margin:0 0 12px; color:var(--primary); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px}
+    ul.bullets{margin:8px 0 0;padding-left:16px}
+    ul.bullets li{margin:6px 0;color:var(--white);line-height:1.6;font-size:13px}
+    .job h4{margin:0 0 4px; font-size:14px; color:var(--white);font-weight:600}
+    .job + .job{margin-top:12px}
+    .meta{font-size:12px; color:var(--glow)}
 
     /* --- PROJECT CARDS --- */
-    .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px}
+    .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:12px}
     @media(max-width:600px){.project-grid{grid-template-columns:1fr}}
     .project-tile{
-      border-radius:10px; padding:14px;
-      background: rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.07);
+      border-radius:12px; padding:14px;
+      background: rgba(255,107,53,0.08);
+      border:1.5px solid rgba(255,107,53,0.2);
       transition: all 0.2s ease;
     }
     .project-tile:hover{
-      background: rgba(241,138,58,0.08);
-      border-color: rgba(241,138,58,0.4);
-      transform: translateY(-2px);
+      background: rgba(255,107,53,0.15);
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,107,53,0.2);
     }
-    .project-tile h4{margin:0 0 6px; font-size:14px; color:var(--white)}
-    .project-tile p{margin:0 0 10px; font-size:13px; color:var(--muted); line-height:1.5}
-    .project-tile .ai-badge{
-      display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px;
-      background: rgba(241,138,58,0.15); border:1px solid rgba(241,138,58,0.4); color:var(--glow);
+    .project-tile h4{margin:0 0 6px; font-size:13px; color:var(--white);font-weight:600}
+    .project-tile p{margin:0 0 10px; font-size:12px; color:var(--muted); line-height:1.5}
+    .project-tile .badge{
+      display:inline-block; font-size:10px; padding:3px 7px; border-radius:6px;
+      background: linear-gradient(135deg, rgba(255,107,53,0.3), rgba(255,140,66,0.2));
+      border:1px solid rgba(255,107,53,0.4); 
+      color:var(--glow);
       margin-bottom:8px;
+      font-weight:600;
     }
     .project-link{
       display:inline-flex; align-items:center; gap:4px;
-      font-size:12px; color:var(--glow); text-decoration:none;
-      border-bottom:1px solid transparent; transition:0.2s;
+      font-size:11px; color:var(--primary); text-decoration:none;
+      border-bottom:1px solid transparent; transition:0.2s;font-weight:500;
     }
-    .project-link:hover{border-color:var(--glow)}
+    .project-link:hover{border-color:var(--primary);color:var(--accent)}
 
     /* --- MODAL --- */
     .modal-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.7); 
+      background: rgba(0, 0, 0, 0.8); 
       z-index: 100; 
       display: flex; align-items: center; justify-content: center;
       opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(5px);
     }
     .modal-overlay.active { opacity: 1; visibility: visible; }
     .modal-card {
       width: 90%; max-width: 500px;
-      background: rgba(50, 15, 5, 0.95); 
-      border: 1px solid var(--glow);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-      border-radius: 16px; padding: 30px;
+      background: rgba(26, 31, 46, 0.95); 
+      border: 1.5px solid var(--primary);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,107,53,0.2);
+      border-radius: 16px; padding: 28px;
       transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
     }
     .modal-overlay.active .modal-card { transform: scale(1); }
-    .modal-title { font-size: 22px; color: var(--glow); margin: 0 0 12px 0; font-weight: 700; }
-    .modal-desc { font-size: 16px; line-height: 1.6; color: var(--muted); }
+    .modal-title { font-size: 20px; color: var(--primary); margin: 0 0 12px 0; font-weight: 700; }
+    .modal-desc { font-size: 14px; line-height: 1.6; color: var(--muted); }
     .close-modal {
-      position: absolute; top: 15px; right: 15px;
+      position: absolute; top: 12px; right: 12px;
       background: none; border: none; color: var(--white);
-      font-size: 24px; cursor: pointer; opacity: 0.7;
+      font-size: 28px; cursor: pointer; opacity: 0.6;
+      transition: 0.2s;
     }
-    .close-modal:hover { opacity: 1; color: var(--glow); }
+    .close-modal:hover { opacity: 1; color: var(--primary); }
 
-    /* ★ ENHANCED PRINT STYLES FOR COLOR PRESERVATION */
+    /* ★ ENHANCED PRINT STYLES */
     @media print {
       @page {
         size: A4;
-        margin: 10mm;
+        margin: 8mm;
       }
       
-      #rippleCanvas, .download-btn, .modal-overlay { display:none !important; }
+      #rippleCanvas, .modal-overlay { display:none !important; }
       
       html, body, .page { 
         height: auto !important; min-height: 0 !important;
         width: 100% !important; overflow: visible !important; 
         margin: 0 !important; padding: 0 !important;
-        background: linear-gradient(circle at top center, #5e2208 0%, #3B1505 70%, #1a0800 100%) !important;
+        background: linear-gradient(135deg, #0F1419 0%, #1A1F2E 50%, #2D1810 100%) !important;
         color: var(--white) !important; 
       }
       
       .resume-card { 
         position: static !important; width: 100% !important; max-width: 100% !important;
         height: auto !important; overflow: visible !important; display: grid !important;
-        box-shadow: none !important; border: none !important; 
+        box-shadow: none !important; border: 1px solid rgba(255,107,53,0.2) !important; 
         background: transparent !important; backdrop-filter: none !important; 
         padding: 0 !important; gap: 20px;
       }
@@ -204,12 +210,11 @@
       }
       
       .sidebar { 
-        border-bottom: 2px solid rgba(255,255,255,0.2); 
-        margin-bottom: 15px; 
-        padding-bottom: 15px; 
+        border-bottom: 1px solid rgba(255,107,53,0.2); 
+        margin-bottom: 12px; 
+        padding-bottom: 12px; 
       }
       
-      /* Preserve text colors in print */
       * { 
         color: var(--white) !important; 
         text-shadow: none !important; 
@@ -220,38 +225,36 @@
       }
       
       .skill, .term-link { 
-        border: 1px solid rgba(255,255,255,0.3) !important; 
-        background: rgba(255,255,255,0.05) !important;
+        border: 1px solid rgba(255,107,53,0.25) !important; 
+        background: rgba(255,107,53,0.08) !important;
         color: var(--white) !important;
       }
       
       .section-card { 
-        border: 1px solid rgba(255,255,255,0.2) !important; 
-        background: rgba(255,255,255,0.02) !important;
-        margin-bottom: 12px; 
+        border: 1px solid rgba(255,107,53,0.15) !important; 
+        background: rgba(255,107,53,0.05) !important;
+        margin-bottom: 10px; 
         page-break-inside: avoid; 
       }
       
       a { 
         text-decoration: underline !important; 
-        color: var(--glow) !important; 
+        color: var(--primary) !important; 
       }
       
       .project-tile { 
-        border: 1px solid rgba(255,255,255,0.2) !important; 
-        background: rgba(255,255,255,0.03) !important;
+        border: 1px solid rgba(255,107,53,0.2) !important; 
+        background: rgba(255,107,53,0.08) !important;
       }
       
-      .ai-badge { 
-        border: 1px solid rgba(241,138,58,0.4) !important; 
-        background: rgba(241,138,58,0.1) !important;
-        color: var(--glow) !important;
+      .badge { 
+        border: 1px solid rgba(255,107,53,0.3) !important; 
+        background: rgba(255,107,53,0.1) !important;
+        color: var(--primary) !important;
       }
-      
-      .print-btn { display: none !important; }
       
       .meta, .contact, .section h3, .muted {
-        color: rgba(255,235,225,0.9) !important;
+        color: var(--muted) !important;
       }
     }
   </style>
@@ -275,134 +278,131 @@
           <div class="avatar" aria-label="SK initials">SK</div>
           <div class="name-block">
             <h1>Sachin Kumar</h1>
-            <div class="tag">AI-focused Freelance Developer · BCA Student</div>
+            <div class="tag">Full Stack Developer · AI Enthusiast</div>
           </div>
         </div>
 
         <div class="contact section">
-          <div><strong>Phone</strong></div>
-          <div><a href="tel:+918930017169" aria-label="Call phone number">+91 8930017169</a></div>
-          <div style="margin-top:8px"><strong>Email</strong></div>
-          <div><a href="mailto:thesachinmehra@gmail.com" aria-label="Send email">thesachinmehra@gmail.com</a></div>
-          <div style="margin-top:8px"><strong>Location</strong></div>
-          <div>VPO Kadma, Charkhi Dadri, Haryana</div>
-          <div style="margin-top:8px"><strong>GitHub</strong></div>
-          <div><a href="https://github.com/sachinkr89" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">github.com/sachinkr89</a></div>
+          <div class="contact-item">
+            <div class="contact-label">📱 Phone</div>
+            <div><a href="tel:+918930017169">+91 8930017169</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">✉ Email</div>
+            <div><a href="mailto:thesachinmehra@gmail.com">thesachinmehra@gmail.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">📍 Location</div>
+            <div>Haryana, India</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">💻 GitHub</div>
+            <div><a href="https://github.com/sachinkr89" target="_blank" rel="noopener noreferrer">sachinkr89</a></div>
+          </div>
         </div>
 
         <div class="section">
           <h3>Skills</h3>
           <div class="skills">
-            <div class="skill" data-term="Python">Python</div>
-            <div class="skill" data-term="HTML">HTML</div>
-            <div class="skill" data-term="CSS">CSS</div>
             <div class="skill" data-term="JavaScript">JavaScript</div>
+            <div class="skill" data-term="Python">Python</div>
             <div class="skill" data-term="Node.js">Node.js</div>
-            <div class="skill" data-term="PHP">PHP</div>
-            <div class="skill" data-term="Hosting">Hosting</div>
-            <div class="skill" data-term="MS Office">MS Office</div>
-            <div class="skill" data-term="Cybersecurity">Cybersecurity</div>
+            <div class="skill" data-term="React">React</div>
+            <div class="skill" data-term="MongoDB">MongoDB</div>
+            <div class="skill" data-term="HTML">HTML5</div>
+            <div class="skill" data-term="CSS">CSS3</div>
+            <div class="skill" data-term="API Development">APIs</div>
             <div class="skill" data-term="Automation">Automation</div>
-            <div class="skill" data-term="AI Integration">AI Integration</div>
+            <div class="skill" data-term="AI Integration">AI/ML</div>
           </div>
         </div>
 
         <div class="section">
           <h3>Languages</h3>
-          <div style="color:var(--muted);font-size:14px">Hindi, English</div>
+          <div style="color:var(--muted);font-size:13px">🇮🇳 Hindi (Native) · 🇬🇧 English (Fluent)</div>
         </div>
         
         <div class="section">
           <h3>Interests</h3>
-          <div style="color:var(--muted);font-size:14px">AI tools · Cybersecurity · Continuous learning</div>
+          <div style="color:var(--muted);font-size:13px">AI/ML · Web Dev · Cybersecurity · Open Source</div>
         </div>
       </aside>
 
       <main class="main">
-        <div class="hero-head">
-          <p class="summary">
-            AI-focused freelance developer and BCA student with hands-on experience in web development, automation, and building efficient solutions using modern tools. Skilled in Python, JavaScript, Node.js, and AI integration. Passionate about cybersecurity and creating intelligent web applications.
-          </p>
-          <div class="button-group">
-            <button class="print-btn" onclick="window.print()" aria-label="Print or save as PDF">Print / Save PDF</button>
-            <button class="download-btn" id="downloadBtn" aria-label="Download resume as PDF">Download Resume</button>
-          </div>
-        </div>
+        <p class="summary">
+          Full-stack developer specializing in AI-powered web solutions. BCA student with 3+ years freelance experience building scalable applications, automation tools, and intelligent systems. Strong foundation in MERN stack and cybersecurity.
+        </p>
 
         <section class="section-card">
           <h3>Education</h3>
           <div class="job">
-            <h4>BCA — DPGITM College, Gurgaon</h4>
-            <div class="meta"><time>2022 – Present</time> (Pursuing)</div>
+            <h4>BCA (Bachelor of Computer Applications)</h4>
+            <div class="meta">DPGITM College, Gurgaon · 2022 – Present</div>
           </div>
           <div class="job">
-            <h4>12th — RPS Sr. Sec. School, Khatod</h4>
-            <div class="meta">CBSE · Completed <time>2018</time> · 74.6%</div>
-          </div>
-          <div class="job">
-            <h4>10th — Hind High School, Kadma</h4>
-            <div class="meta">HBSE · Completed <time>2016</time> · 79.4%</div>
+            <h4>12th Grade (CBSE)</h4>
+            <div class="meta">RPS Sr. Sec. School · 2018 · 74.6%</div>
           </div>
         </section>
 
         <section class="section-card">
           <h3>Experience</h3>
           <div class="job">
-            <h4>Freelance Web Developer</h4>
-            <div class="meta">Self-Employed · <time>2022 – Present</time></div>
+            <h4>Freelance Full Stack Developer</h4>
+            <div class="meta">Self-Employed · 2022 – Present</div>
             <ul class="bullets">
-              <li>Built template websites and custom layouts for clients with responsive design.</li>
-              <li>Fixed bugs and improved performance on small to medium-sized projects.</li>
-              <li>Managed hosting, deployment, domain configuration, and SSL certificates.</li>
-              <li>Wrote <span class="term-link" data-term="Automation">automation</span> scripts using Python for repetitive tasks.</li>
+              <li>Developed 15+ responsive web applications with HTML5, CSS3, JavaScript, and modern frameworks.</li>
+              <li>Built backend APIs using Node.js and Express.js; managed databases with MongoDB and MySQL.</li>
+              <li>Implemented <span class="term-link" data-term="AI Integration">AI features</span> (calorie detection, expense analysis) using external APIs.</li>
+              <li>Automated deployment pipelines and domain management; optimized application performance.</li>
+              <li>Debugged and enhanced existing projects; reduced page load times by 30–40%.</li>
             </ul>
           </div>
           <div class="job">
             <h4>Monitoring Executive</h4>
-            <div class="meta">Hindustan Wellness · Gurgaon · <time>July 2025 – Sept 2025</time></div>
+            <div class="meta">Hindustan Wellness · July – Sept 2025</div>
             <ul class="bullets">
-              <li>Monitored team workflow via CCTV systems and real-time dashboards.</li>
-              <li>Prepared detailed daily activity reports and performance metrics.</li>
+              <li>Real-time CCTV monitoring and workflow tracking.</li>
+              <li>Generated daily performance reports and analytics dashboards.</li>
             </ul>
           </div>
         </section>
 
-        <!-- ★ AI Projects Section -->
         <section class="section-card">
-          <h3>AI-Powered Projects <span style="font-size:11px;color:var(--glow);font-weight:400;text-transform:none;letter-spacing:0">(Live on Vercel)</span></h3>
+          <h3>Featured Projects</h3>
           <div class="project-grid">
 
             <div class="project-tile">
-              <span class="ai-badge">⚡ AI-Powered</span>
+              <span class="badge">⚡ AI-Powered</span>
               <h4>Body Fuel AI</h4>
-              <p>Detects calories and nutrients from food inputs using AI vision. Tracks daily health goals and body metrics with personalized insights.</p>
+              <p>Calorie and nutrient detection from food images using AI vision. Health metrics tracking with personalized recommendations.</p>
               <a class="project-link" href="https://body-fuel-ai.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 body-fuel-ai.vercel.app
+                🔗 Live Demo
               </a>
             </div>
 
             <div class="project-tile">
-              <span class="ai-badge">⚡ AI-Powered</span>
+              <span class="badge">⚡ AI-Powered</span>
               <h4>FinTrack AI</h4>
-              <p>Intelligent financial tracker that analyzes spending patterns. Uses AI to suggest budget optimization and detect anomalies in expenses.</p>
+              <p>Intelligent expense tracker with AI-powered spending analysis, budget optimization, and anomaly detection.</p>
               <a class="project-link" href="https://fintrack-ai-one.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 fintrack-ai-one.vercel.app
-              </a>
-            </div>
-
-            <div class="project-tile">
-              <h4>Nexus Shop</h4>
-              <p>Fully functional e-commerce platform with product listings, shopping cart, filtering, and seamless checkout experience.</p>
-              <a class="project-link" href="https://nexus-shop-9wgj.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 nexus-shop-9wgj.vercel.app
+                🔗 Live Demo
               </a>
             </div>
 
             <div class="project-tile">
               <h4>KisanYantra</h4>
-              <p>Agriculture equipment rental system helping farmers access tools and machinery efficiently without upfront purchase costs.</p>
+              <p>Agricultural equipment rental platform. Connects farmers with equipment owners for efficient resource sharing.</p>
               <a class="project-link" href="https://kisanyantra-ten.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 kisanyantra-ten.vercel.app
+                🔗 Live Demo
+              </a>
+            </div>
+
+            <div class="project-tile">
+              <h4>Nexus Shop</h4>
+              <p>Modern e-commerce template with product filtering, cart management, and responsive design.</p>
+              <a class="project-link" href="https://nexus-shop-9wgj.vercel.app" target="_blank" rel="noopener noreferrer">
+                🔗 View Template
               </a>
             </div>
 
@@ -410,16 +410,14 @@
         </section>
 
         <section class="section-card">
-          <h3>Security Project — LeafSec</h3>
-          <div class="job">
-            <h4>Founder & Security Lead</h4>
-            <div class="meta"><time>2021</time></div>
-            <ul class="bullets">
-              <li>Offered comprehensive website security assessments and vulnerability reports for developers.</li>
-              <li>Performed manual penetration testing and <span class="term-link" data-term="Burp Suite">Burp Suite</span> analysis (XSS, CSRF, session hijacking vectors).</li>
-              <li>Delivered detailed remediation reports with actionable security recommendations.</li>
-            </ul>
-          </div>
+          <h3>Expertise Areas</h3>
+          <ul class="bullets">
+            <li><strong>Frontend:</strong> React, JavaScript, HTML5, CSS3, responsive design, UI/UX implementation.</li>
+            <li><strong>Backend:</strong> Node.js, Express.js, REST APIs, database design (MongoDB, MySQL).</li>
+            <li><strong>AI/ML Integration:</strong> External API integration (vision APIs, NLP models, prediction engines).</li>
+            <li><strong><span class="term-link" data-term="Automation">Automation</span>:</strong> Python scripting for repetitive tasks, web scraping, data processing.</li>
+            <li><strong>Deployment:</strong> Vercel, Netlify, VPS management, domain configuration, SSL certificates.</li>
+          </ul>
         </section>
 
       </main>
@@ -434,7 +432,7 @@
   const ctx = canvas.getContext('2d');
   let width, height;
   let ripples = [];
-  const colors = ['#A54014', '#D05E1B', '#F18A3A'];
+  const colors = ['#FF6B35', '#FF8C42', '#FFB347'];
 
   const resize = () => { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; };
   window.addEventListener('resize', resize); resize();
@@ -443,10 +441,10 @@
     constructor(x, y, isClick = false) {
       this.x = x; this.y = y; this.radius = 1;
       if (isClick) {
-        this.maxRadius = 300; this.speed = 3; this.opacity = 1; this.lineWidth = 3; this.color = '#F18A3A';
+        this.maxRadius = 250; this.speed = 2.5; this.opacity = 0.8; this.lineWidth = 2; this.color = '#FFB347';
       } else {
-        this.maxRadius = Math.random() * 100 + 100; this.speed = Math.random() * 0.5 + 0.5;
-        this.opacity = Math.random() * 0.4 + 0.1; this.lineWidth = Math.random() * 2 + 1;
+        this.maxRadius = Math.random() * 120 + 80; this.speed = Math.random() * 0.4 + 0.3;
+        this.opacity = Math.random() * 0.3 + 0.1; this.lineWidth = Math.random() * 1.5 + 0.5;
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
     }
@@ -465,7 +463,7 @@
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
-    if (Math.random() < 0.03) ripples.push(new Ripple(Math.random() * width, Math.random() * height, false));
+    if (Math.random() < 0.02) ripples.push(new Ripple(Math.random() * width, Math.random() * height, false));
     for (let i = 0; i < ripples.length; i++) {
       ripples[i].update(); ripples[i].draw();
       if (ripples[i].opacity <= 0 || ripples[i].radius >= ripples[i].maxRadius) { ripples.splice(i, 1); i--; }
@@ -479,18 +477,16 @@
 /* --- KNOWLEDGE BASE MODAL --- */
 (function() {
   const definitions = {
-    "Python": "A high-level, general-purpose programming language known for its readability and vast ecosystem. I use it for automation scripts, web scraping, and backend logic.",
-    "PHP": "A popular general-purpose scripting language especially suited to web development. I use it to manage server-side logic and relational databases.",
-    "HTML": "The standard markup language for documents designed to be displayed in a web browser. Foundation of all web pages.",
-    "CSS": "Style sheet language used for describing the presentation of a document written in HTML, including layout, colors, fonts, and animations.",
-    "JavaScript": "A programming language that enables interactive web pages. I use it for frontend logic, animations, API calls, and DOM manipulation.",
-    "Node.js": "A JavaScript runtime built on Chrome's V8 engine, allowing me to run JavaScript on the server side for backend development.",
-    "Hosting": "The service of providing storage space and access for websites. I have experience managing domains, cPanel, VPS, and various deployments.",
-    "Cybersecurity": "The practice of protecting systems, networks, and programs from digital attacks. I focus on web vulnerability assessment and penetration testing.",
-    "Automation": "Using technology to perform tasks with reduced human assistance. I write scripts to automate repetitive web tasks and data processing.",
-    "Burp Suite": "A leading software for web security testing and penetration testing. I use it to intercept requests and analyze potential vulnerabilities like XSS, SQL injection, and CSRF.",
-    "MS Office": "Proficiency in Word, Excel, and PowerPoint for documentation, reporting, data analysis, and presentation creation.",
-    "AI Integration": "Building web applications that connect to AI APIs for intelligent features like calorie detection, financial analysis, and smart recommendations."
+    "JavaScript": "Versatile programming language for frontend and backend development. I use it for interactive UIs, real-time features, and server-side logic.",
+    "Python": "High-level language for automation, data processing, and backend logic. Excellent for AI integration and scripting.",
+    "Node.js": "JavaScript runtime for server-side development. Enables building scalable APIs and real-time applications.",
+    "React": "Modern JavaScript library for building interactive user interfaces with component-based architecture.",
+    "MongoDB": "NoSQL database for flexible, scalable data storage. Perfect for rapid development and handling unstructured data.",
+    "HTML": "Markup language for web pages. HTML5 includes semantic elements and modern web standards.",
+    "CSS": "Styling language for beautiful, responsive designs. CSS3 features animations, flexbox, grid, and custom properties.",
+    "API Development": "Building RESTful APIs for seamless communication between frontend and backend systems.",
+    "Automation": "Using scripts and tools to automate repetitive tasks, improving productivity and reducing errors.",
+    "AI Integration": "Integrating AI/ML services into applications for smart features like image recognition, NLP, and predictions."
   };
 
   const modal = document.getElementById('infoModal');
@@ -511,35 +507,7 @@
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 })();
-
-/* --- PDF DOWNLOAD FUNCTIONALITY --- */
-(function() {
-  const downloadBtn = document.getElementById('downloadBtn');
-  
-  downloadBtn.addEventListener('click', function() {
-    // Using html2pdf library for better color preservation
-    const element = document.getElementById('resume');
-    const opt = {
-      margin: 10,
-      filename: 'Sachin_Kumar_Resume.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, backgroundColor: '#1a0800' },
-      jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
-    };
-    
-    // Check if html2pdf is available, if not fallback to print
-    if (typeof html2pdf !== 'undefined') {
-      html2pdf().set(opt).from(element).save();
-    } else {
-      // Fallback: Use print dialog
-      window.print();
-    }
-  });
-})();
 </script>
-
-<!-- Include html2pdf library for PDF download with colors -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 </body>
 </html>
