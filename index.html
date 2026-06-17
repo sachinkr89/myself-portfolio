@@ -3,299 +3,551 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Sachin Kumar — Full Stack Web Developer & BCA Student. Specialized in AI-integrated web applications, Python automation, and forex trading. Portfolio with featured projects." />
-  <meta name="keywords" content="web developer, Python automation, AI-integrated apps, forex trading, full-stack development" />
+  <meta name="description" content="Sachin Kumar — Full Stack Web Developer & BCA Student. Specialized in AI-integrated web applications, Python automation, and forex trading. 3+ years freelance experience." />
+  <meta name="keywords" content="web developer, full-stack, Python automation, AI integration, PostgreSQL, MySQL, React, Node.js" />
   <meta name="author" content="Sachin Kumar" />
-  <meta property="og:title" content="Sachin Kumar — Web Developer" />
-  <meta property="og:description" content="Full-stack developer with expertise in AI-integrated web apps, Python automation, and 3+ years forex trading experience." />
+  <meta property="og:title" content="Sachin Kumar — Full Stack Web Developer" />
+  <meta property="og:description" content="Building modern web apps with AI integration, Python automation, and 3+ years of professional experience." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#FF6B35" />
-  <title>Sachin Kumar — Web Developer</title>
+  <title>Sachin Kumar — Web Developer Portfolio</title>
   <style>
-    :root{
-      --primary: #FF6B35; 
-      --accent: #FF8C42;   
-      --glow: #FFB347;    
+    :root {
+      --primary: #FF6B35;
+      --primary-dark: #E55A24;
+      --accent: #FF8C42;
+      --glow: #FFB347;
       --muted: rgba(220, 220, 220, 0.88);
       --white: #fff;
       --card-border: rgba(255,107,53,0.22);
       --maxw: 1000px;
-      font-family: "Poppins", "Inter", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      --transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-family: "Poppins", "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
     }
 
-    html,body{
-      height:100%; margin:0; 
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
       background: linear-gradient(135deg, #1a1f3a 0%, #16213e 50%, #0f3460 100%);
-      color:var(--white); 
-      -webkit-font-smoothing:antialiased;
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
-    *{box-sizing:border-box}
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(255,107,53,0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(255,140,66,0.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
     #rippleCanvas {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 0; pointer-events: none; mix-blend-mode: screen; 
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: screen;
     }
 
-    .page{
-      position:relative; min-height:100vh; display:flex;
-      align-items:flex-start; justify-content:center; padding:40px 16px 60px;
+    .page {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 16px 60px;
       z-index: 1;
     }
-    
-    .resume-card{
-      width:100%; max-width:var(--maxw); border-radius:20px; 
-      border:1.5px solid var(--card-border);
-      background: rgba(15, 20, 40, 0.75); 
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 8px 32px rgba(255,107,53,0.15), 0 0 60px rgba(255,107,53,0.05); 
-      overflow:hidden; display:grid; grid-template-columns:300px 1fr; gap:28px; padding:28px;
-      position:relative;
-    }
-    .resume-card > *{position:relative; z-index:2}
-    @media (max-width:900px){ 
-      .resume-card { 
-        grid-template-columns:1fr; 
-        padding:20px; 
-        gap:20px;
-      } 
+
+    .resume-card {
+      width: 100%;
+      max-width: var(--maxw);
+      border-radius: 24px;
+      border: 1.5px solid var(--card-border);
+      background: rgba(15, 20, 40, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(255,107,53,0.15), 0 0 60px rgba(255,107,53,0.05);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 28px;
+      padding: 28px;
+      position: relative;
+      animation: slideUp 0.6s ease-out;
     }
 
-    .sidebar{padding:4px 0}
-    .identity{display:flex;gap:16px;align-items:center;margin-bottom:6px}
-    .avatar{
-      width:80px;height:80px;border-radius:16px;
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .resume-card > * { position: relative; z-index: 2; }
+
+    @media (max-width: 900px) {
+      .resume-card {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+      }
+    }
+
+    /* SIDEBAR */
+    .sidebar { padding: 4px 0; }
+    .identity {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
-      display:flex;align-items:center;justify-content:center;
-      font-weight:900;font-size:32px;color:#0F1419;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 32px;
+      color: #0F1419;
       box-shadow: 0 8px 24px rgba(255,107,53,0.25);
       flex-shrink: 0;
+      animation: avatarFloat 3s ease-in-out infinite;
     }
-    .name-block h1{
-      margin:0;font-size:26px;color:var(--white);font-weight:800;
+
+    @keyframes avatarFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .name-block h1 {
+      margin: 0;
+      font-size: 28px;
+      color: var(--white);
+      font-weight: 800;
       letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--white), var(--glow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .name-block .tag{
-      color:var(--muted);font-size:12px;margin-top:6px;
+
+    .name-block .tag {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
       background: rgba(255,107,53,0.12);
-      padding: 5px 10px;
+      padding: 6px 12px;
       border-radius: 6px;
       display: inline-block;
       font-weight: 600;
+      border: 1px solid rgba(255,107,53,0.2);
     }
-    
-    .contact{margin-top:18px;font-size:13px;color:var(--muted);line-height:2}
-    .contact-item{margin-bottom:12px}
-    .contact-label{color:var(--glow);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing: 0.5px;}
-    .contact a{color:var(--white);text-decoration:none; border-bottom: 1px solid transparent; transition: 0.2s;font-weight: 500;}
-    .contact a:hover{color:var(--primary);border-color: var(--primary);}
-    
-    .section{margin-top:20px}
-    .section h3{
-      margin:0 0 12px;color:var(--primary);font-size:11px;font-weight:800;
-      text-transform:uppercase;letter-spacing:2.5px;
+
+    .contact { margin-top: 18px; font-size: 13px; line-height: 2; }
+    .contact-item { margin-bottom: 12px; }
+    .contact-label {
+      color: var(--glow);
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-    
-    .skills{display:flex;flex-wrap:wrap;gap:7px}
-    
+
+    .contact a {
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .contact a:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .section { margin-top: 24px; }
+    .section h3 {
+      margin: 0 0 12px;
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+    }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+
     .skill, .term-link {
-      background: rgba(255,107,53,0.14); 
-      padding:6px 11px; border-radius:8px; 
-      font-size:12px; border:1.5px solid rgba(255,107,53,0.28); 
-      transition: all 0.2s ease; cursor: pointer; position: relative;
+      background: rgba(255,107,53,0.14);
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      border: 1.5px solid rgba(255,107,53,0.28);
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
       color: var(--white);
       font-weight: 600;
     }
+
     .skill:hover, .term-link:hover {
-      background: rgba(255,107,53,0.28); 
+      background: rgba(255,107,53,0.28);
       border-color: var(--primary);
-      color: var(--primary); 
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(255,107,53,0.2);
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(255,107,53,0.25);
     }
+
     .term-link {
-      display: inline-block; padding: 2px 6px; border-radius: 4px; margin: 0 1px;
-      border-bottom: 2px dashed rgba(255,107,53,0.45);
+      display: inline-block;
+      padding: 3px 7px;
+      border-radius: 4px;
+      margin: 0 1px;
+      border-bottom: 2px dashed rgba(255,107,53,0.5);
+    }
+
+    /* MAIN CONTENT */
+    .main { padding: 4px 0; }
+    .summary {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .section-card {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(255,107,53,0.06);
+      border: 1.5px solid rgba(255,107,53,0.18);
+      transition: var(--transition);
+    }
+
+    .section-card:hover {
+      background: rgba(255,107,53,0.09);
+      border-color: rgba(255,107,53,0.32);
+      transform: translateX(4px);
+    }
+
+    .section-card h3 {
+      margin: 0 0 14px;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    ul.bullets { margin: 10px 0 0; padding-left: 18px; }
+    ul.bullets li {
+      margin: 8px 0;
+      color: var(--white);
+      line-height: 1.7;
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    ul.bullets li:hover {
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    .job h4 {
+      margin: 0 0 4px;
+      font-size: 15px;
+      color: var(--white);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .job + .job { margin-top: 14px; }
+    .meta { font-size: 12px; color: var(--glow); font-weight: 600; }
+
+    /* PROJECT CARDS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media(max-width: 600px) {
+      .project-grid { grid-template-columns: 1fr; }
+    }
+
+    .project-tile {
+      border-radius: 12px;
+      padding: 18px;
+      background: rgba(255,107,53,0.09);
+      border: 1.5px solid rgba(255,107,53,0.22);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-tile::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .project-tile:hover::before {
+      left: 100%;
+    }
+
+    .project-tile:hover {
+      background: rgba(255,107,53,0.16);
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(255,107,53,0.2);
+    }
+
+    .project-tile h4 {
+      margin: 0 0 7px;
+      font-size: 15px;
+      color: var(--white);
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+
+    .project-tile p {
+      margin: 0 0 11px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .project-tile .badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, rgba(255,107,53,0.35), rgba(255,140,66,0.25));
+      border: 1px solid rgba(255,107,53,0.45);
+      color: var(--glow);
+      margin-bottom: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--primary);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: var(--transition);
       font-weight: 600;
     }
 
-    .main{padding:4px 0}
-    .summary{
-      font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:10px;
-      font-weight: 500;
-    }
-    
-    .section-card{
-      margin-top:18px;padding:18px;border-radius:14px;
-      background:rgba(255,107,53,0.06); 
-      border:1.5px solid rgba(255,107,53,0.18);
-    }
-    .section-card h3{
-      margin:0 0 14px; color:var(--primary); font-size:12px; 
-      font-weight:800; text-transform:uppercase; letter-spacing:2px;
-    }
-    ul.bullets{margin:10px 0 0;padding-left:18px}
-    ul.bullets li{
-      margin:8px 0;color:var(--white);line-height:1.7;font-size:14px;
-      font-weight: 500;
-    }
-    .job h4{
-      margin:0 0 4px; font-size:15px; color:var(--white);
-      font-weight:700;letter-spacing: -0.3px;
-    }
-    .job + .job{margin-top:14px}
-    .meta{font-size:12px; color:var(--glow);font-weight: 600;}
-
-    /* --- PROJECT CARDS --- */
-    .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px}
-    @media(max-width:600px){.project-grid{grid-template-columns:1fr}}
-    .project-tile{
-      border-radius:12px; padding:16px;
-      background: rgba(255,107,53,0.09);
-      border:1.5px solid rgba(255,107,53,0.22);
-      transition: all 0.2s ease;
-    }
-    .project-tile:hover{
-      background: rgba(255,107,53,0.16);
+    .project-link:hover {
       border-color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(255,107,53,0.2);
+      color: var(--accent);
+      transform: translateX(2px);
     }
-    .project-tile h4{
-      margin:0 0 7px; font-size:14px; color:var(--white);
-      font-weight:700;letter-spacing: -0.2px;
-    }
-    .project-tile p{
-      margin:0 0 11px; font-size:13px; color:var(--muted); 
-      line-height:1.6;font-weight: 500;
-    }
-    .project-tile .badge{
-      display:inline-block; font-size:11px; padding:4px 8px; border-radius:6px;
-      background: linear-gradient(135deg, rgba(255,107,53,0.35), rgba(255,140,66,0.25));
-      border:1px solid rgba(255,107,53,0.45); 
-      color:var(--glow);
-      margin-bottom:9px;
-      font-weight:700;
-    }
-    .project-link{
-      display:inline-flex; align-items:center; gap:4px;
-      font-size:12px; color:var(--primary); text-decoration:none;
-      border-bottom:1px solid transparent; transition:0.2s;font-weight:600;
-    }
-    .project-link:hover{border-color:var(--primary);color:var(--accent)}
 
-    /* --- MODAL --- */
+    /* MODAL */
     .modal-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.85); 
-      z-index: 100; 
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
       backdrop-filter: blur(5px);
     }
-    .modal-overlay.active { opacity: 1; visibility: visible; }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
     .modal-card {
-      width: 90%; max-width: 500px;
-      background: rgba(15, 20, 40, 0.98); 
+      width: 90%;
+      max-width: 500px;
+      background: rgba(15, 20, 40, 0.98);
       border: 1.5px solid var(--primary);
       box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,107,53,0.2);
-      border-radius: 16px; padding: 28px;
-      transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-radius: 16px;
+      padding: 28px;
+      transform: scale(0.9);
+      transition: var(--transition);
       position: relative;
+      animation: modalPop 0.3s ease;
     }
-    .modal-overlay.active .modal-card { transform: scale(1); }
-    .modal-title { 
-      font-size: 22px; color: var(--primary); margin: 0 0 12px 0; 
-      font-weight: 800;letter-spacing: -0.5px;
+
+    @keyframes modalPop {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
-    .modal-desc { 
-      font-size: 14px; line-height: 1.7; color: var(--muted);
+
+    .modal-overlay.active .modal-card {
+      transform: scale(1);
+    }
+
+    .modal-title {
+      font-size: 22px;
+      color: var(--primary);
+      margin: 0 0 12px 0;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .modal-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
       font-weight: 500;
     }
-    .close-modal {
-      position: absolute; top: 12px; right: 12px;
-      background: none; border: none; color: var(--white);
-      font-size: 28px; cursor: pointer; opacity: 0.6;
-      transition: 0.2s;
-    }
-    .close-modal:hover { opacity: 1; color: var(--primary); }
 
-    /* ★ ENHANCED PRINT STYLES */
+    .close-modal {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 28px;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: var(--transition);
+    }
+
+    .close-modal:hover {
+      opacity: 1;
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    /* PRINT STYLES */
     @media print {
       @page {
         size: A4;
         margin: 8mm;
       }
-      
-      #rippleCanvas, .modal-overlay { display:none !important; }
-      
-      html, body, .page { 
-        height: auto !important; min-height: 0 !important;
-        width: 100% !important; overflow: visible !important; 
-        margin: 0 !important; padding: 0 !important;
+
+      #rippleCanvas, .modal-overlay { display: none !important; }
+
+      html, body, .page {
+        height: auto !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
         background: linear-gradient(135deg, #1a1f3a 0%, #16213e 50%, #0f3460 100%) !important;
-        color: var(--white) !important; 
+        color: var(--white) !important;
       }
-      
-      .resume-card { 
-        position: static !important; width: 100% !important; max-width: 100% !important;
-        height: auto !important; overflow: visible !important; display: grid !important;
-        box-shadow: none !important; border: 1px solid rgba(255,107,53,0.22) !important; 
-        background: transparent !important; backdrop-filter: none !important; 
-        padding: 0 !important; gap: 20px;
+
+      .resume-card {
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        display: grid !important;
+        box-shadow: none !important;
+        border: 1px solid rgba(255,107,53,0.22) !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        padding: 0 !important;
+        gap: 20px;
       }
-      
-      .sidebar, .main { 
-        width: 100% !important; 
-        display: block !important; 
+
+      .sidebar, .main {
+        width: 100% !important;
+        display: block !important;
         page-break-inside: avoid;
       }
-      
-      .sidebar { 
-        border-bottom: 1px solid rgba(255,107,53,0.22); 
-        margin-bottom: 12px; 
-        padding-bottom: 12px; 
+
+      .sidebar {
+        border-bottom: 1px solid rgba(255,107,53,0.22);
+        margin-bottom: 12px;
+        padding-bottom: 12px;
       }
-      
-      * { 
-        color: var(--white) !important; 
-        text-shadow: none !important; 
-      }
-      
-      h1, h2, h3, h4, h5, h6 {
+
+      * {
         color: var(--white) !important;
+        text-shadow: none !important;
       }
-      
-      .skill, .term-link { 
-        border: 1px solid rgba(255,107,53,0.28) !important; 
+
+      h1, h2, h3, h4, h5, h6 { color: var(--white) !important; }
+
+      .skill, .term-link {
+        border: 1px solid rgba(255,107,53,0.28) !important;
         background: rgba(255,107,53,0.09) !important;
         color: var(--white) !important;
       }
-      
-      .section-card { 
-        border: 1px solid rgba(255,107,53,0.18) !important; 
+
+      .section-card {
+        border: 1px solid rgba(255,107,53,0.18) !important;
         background: rgba(255,107,53,0.06) !important;
-        margin-bottom: 10px; 
-        page-break-inside: avoid; 
+        margin-bottom: 10px;
+        page-break-inside: avoid;
       }
-      
-      a { 
-        text-decoration: underline !important; 
-        color: var(--primary) !important; 
+
+      a {
+        text-decoration: underline !important;
+        color: var(--primary) !important;
       }
-      
-      .project-tile { 
-        border: 1px solid rgba(255,107,53,0.22) !important; 
+
+      .project-tile {
+        border: 1px solid rgba(255,107,53,0.22) !important;
         background: rgba(255,107,53,0.09) !important;
       }
-      
-      .badge { 
-        border: 1px solid rgba(255,107,53,0.35) !important; 
+
+      .badge {
+        border: 1px solid rgba(255,107,53,0.35) !important;
         background: rgba(255,107,53,0.12) !important;
         color: var(--primary) !important;
       }
-      
+
       .meta, .contact, .section h3, .muted {
         color: var(--muted) !important;
       }
@@ -303,7 +555,6 @@
   </style>
 </head>
 <body>
-
   <canvas id="rippleCanvas"></canvas>
 
   <div class="modal-overlay" id="infoModal">
@@ -340,44 +591,58 @@
           </div>
           <div class="contact-item">
             <div class="contact-label">💻 GitHub</div>
-            <div><a href="https://github.com/sachinkr89" target="_blank" rel="noopener noreferrer">sachinkr89</a></div>
+            <div><a href="https://github.com/sachinkr89" target="_blank" rel="noopener noreferrer">github.com/sachinkr89</a></div>
           </div>
         </div>
 
         <div class="section">
-          <h3>Skills</h3>
+          <h3>Core Skills</h3>
           <div class="skills">
             <div class="skill" data-term="Python">Python</div>
-            <div class="skill" data-term="Automation">Automation</div>
-            <div class="skill" data-term="AI Integration">AI Tools</div>
             <div class="skill" data-term="JavaScript">JavaScript</div>
-            <div class="skill" data-term="Node.js">Node.js</div>
             <div class="skill" data-term="React">React</div>
+            <div class="skill" data-term="Node.js">Node.js</div>
             <div class="skill" data-term="PostgreSQL">PostgreSQL</div>
             <div class="skill" data-term="MySQL">MySQL</div>
+            <div class="skill" data-term="Automation">Automation</div>
+            <div class="skill" data-term="AI Integration">AI Tools</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Additional Skills</h3>
+          <div class="skills">
             <div class="skill" data-term="HTML">HTML5</div>
             <div class="skill" data-term="CSS">CSS3</div>
+            <div class="skill" data-term="Express">Express.js</div>
+            <div class="skill" data-term="API Development">APIs</div>
+            <div class="skill" data-term="Deployment">Deployment</div>
+            <div class="skill" data-term="Responsive Design">Responsive</div>
           </div>
         </div>
 
         <div class="section">
           <h3>Languages</h3>
-          <div style="color:var(--muted);font-size:13px;font-weight:500">🇮🇳 Hindi (Native) · 🇬🇧 English (Basic)</div>
+          <div style="color:var(--muted);font-size:13px;font-weight:500">
+            🇮🇳 Hindi (Native) · 🇬🇧 English (Basic)
+          </div>
         </div>
-        
+
         <div class="section">
           <h3>Interests</h3>
-          <div style="color:var(--muted);font-size:13px;font-weight:500">Web Dev · AI Tools · Automation · Forex Trading</div>
+          <div style="color:var(--muted);font-size:13px;font-weight:500">
+            Web Development · AI Integration · Automation · Forex Trading
+          </div>
         </div>
       </aside>
 
       <main class="main">
         <p class="summary">
-          Full-stack web developer specializing in building modern web applications with AI tool integration. BCA student with 3+ years of hands-on development experience and 3 years of forex trading background. Expert in Python automation, rapid web development, and leveraging AI tools for enhanced productivity and intelligent features.
+          Full-stack web developer with 3+ years of professional experience specializing in building modern applications with AI tool integration. Proficient in React, Node.js, and both relational databases (PostgreSQL, MySQL). Expert in <span class="term-link" data-term="Python">Python</span> automation, rapid development, and leveraging AI tools for enhanced productivity.
         </p>
 
         <section class="section-card">
-          <h3>Education</h3>
+          <h3>🎓 Education</h3>
           <div class="job">
             <h4>BCA (Bachelor of Computer Applications)</h4>
             <div class="meta">DPGITM College, Gurgaon · 2022 – Present</div>
@@ -389,177 +654,224 @@
         </section>
 
         <section class="section-card">
-          <h3>Experience</h3>
+          <h3>💼 Experience</h3>
           <div class="job">
             <h4>Full Stack Web Developer (Freelance)</h4>
             <div class="meta">Self-Employed · 2022 – Present</div>
             <ul class="bullets">
-              <li>Developed 15+ web applications using modern tech stack with AI tool integration for faster development cycles.</li>
-              <li>Built responsive interfaces with React, JavaScript, and HTML5/CSS3 for optimal user experience across all devices.</li>
-              <li>Created <span class="term-link" data-term="Python">Python</span> <span class="term-link" data-term="Automation">automation</span> scripts for web scraping, data processing, and system integration tasks.</li>
-              <li>Designed and maintained databases with PostgreSQL and MySQL ensuring data integrity and performance.</li>
-              <li>Managed backend APIs with Node.js and Express, deployed applications on Vercel/VPS with 30-40% performance optimization.</li>
+              <li>Developed 15+ production-ready web applications using React, Node.js, and AI tool integration.</li>
+              <li>Built responsive UIs with modern CSS3 animations and HTML5 semantics for 100% cross-device compatibility.</li>
+              <li>Designed and optimized <span class="term-link" data-term="PostgreSQL">PostgreSQL</span> & <span class="term-link" data-term="MySQL">MySQL</span> databases with complex queries and indexing strategies.</li>
+              <li>Created <span class="term-link" data-term="Python">Python</span> <span class="term-link" data-term="Automation">automation</span> scripts for web scraping, data processing, and system integration.</li>
+              <li>Deployed applications on Vercel & VPS with 30-40% performance optimization and zero-downtime updates.</li>
             </ul>
           </div>
+
           <div class="job">
             <h4>Forex Trading & Market Analysis</h4>
             <div class="meta">Independent · 2022 – Present</div>
             <ul class="bullets">
-              <li>3+ years of active forex trading experience with focus on technical analysis and systematic strategies.</li>
-              <li>Developed trading automation scripts using Python for automated order execution and market monitoring.</li>
-              <li>Implemented risk management protocols and backtested trading strategies for consistent performance.</li>
+              <li>3+ years of hands-on forex trading with focus on technical analysis and systematic strategies.</li>
+              <li>Developed trading <span class="term-link" data-term="Automation">automation</span> scripts using Python for order execution and market monitoring.</li>
+              <li>Implemented risk management protocols ensuring consistent performance across market conditions.</li>
             </ul>
           </div>
+
           <div class="job">
             <h4>Monitoring Executive</h4>
             <div class="meta">Hindustan Wellness · July – Sept 2025</div>
             <ul class="bullets">
-              <li>Real-time system monitoring and workflow tracking via integrated management systems.</li>
-              <li>Generated performance reports and analytics dashboards for stakeholder insights.</li>
+              <li>Real-time system monitoring and workflow tracking via integrated management dashboards.</li>
+              <li>Generated comprehensive performance reports and analytics for stakeholder insights.</li>
             </ul>
           </div>
         </section>
 
         <section class="section-card">
-          <h3>Featured Projects</h3>
+          <h3>🚀 Featured Projects</h3>
           <div class="project-grid">
-
             <div class="project-tile">
               <span class="badge">⚡ AI-Integrated</span>
               <h4>Body Fuel AI</h4>
-              <p>AI-powered calorie detection from food images with health metrics tracking. Built with React, Node.js, and AI vision APIs for personalized recommendations.</p>
+              <p>AI-powered calorie detection from food images. Real-time health metrics tracking with personalized recommendations using vision APIs.</p>
               <a class="project-link" href="https://body-fuel-ai.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 Live Demo
+                🔗 View Live
               </a>
             </div>
 
             <div class="project-tile">
               <span class="badge">⚡ AI-Integrated</span>
               <h4>FinTrack AI</h4>
-              <p>Intelligent expense tracking with AI-powered spending analysis and budget optimization. Features real-time insights and anomaly detection using AI services.</p>
+              <p>Intelligent expense tracker with AI-powered spending analysis, smart budget optimization, and anomaly detection.</p>
               <a class="project-link" href="https://fintrack-ai-one.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 Live Demo
+                🔗 View Live
               </a>
             </div>
 
             <div class="project-tile">
               <h4>KisanYantra</h4>
-              <p>Agricultural equipment rental platform. Built with full-stack tech connecting farmers with equipment owners. Features responsive design and efficient booking system.</p>
+              <p>Agricultural equipment rental platform connecting farmers with equipment owners. Full-stack application with booking system and reviews.</p>
               <a class="project-link" href="https://kisanyantra-ten.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 Live Demo
+                🔗 View Live
               </a>
             </div>
 
             <div class="project-tile">
               <h4>Nexus Shop</h4>
-              <p>Modern e-commerce template with product filtering, cart management, and checkout flow. Fully responsive mobile design with clean UI/UX.</p>
+              <p>Modern e-commerce template with product filtering, cart management, and checkout. Fully responsive design with smooth animations.</p>
               <a class="project-link" href="https://nexus-shop-9wgj.vercel.app" target="_blank" rel="noopener noreferrer">
-                🔗 View Template
+                🔗 View Demo
               </a>
             </div>
-
           </div>
         </section>
 
         <section class="section-card">
-          <h3>Core Expertise</h3>
+          <h3>🎯 Core Expertise</h3>
           <ul class="bullets">
-            <li><strong>Web Development with AI Tools:</strong> Building full-stack web applications using modern frameworks and AI tools to enhance development speed and feature capabilities.</li>
-            <li><strong><span class="term-link" data-term="Python">Python</span> <span class="term-link" data-term="Automation">Automation</span>:</strong> Advanced scripting for web scraping, task automation, data processing, and system integration. Automating repetitive workflows for efficiency.</li>
-            <li><strong>Full Stack Development:</strong> End-to-end development with React/JavaScript frontend, Node.js/Express backend, and PostgreSQL/MySQL databases for production-grade applications.</li>
-            <li><strong>Mobile Responsive Design:</strong> Cross-device optimization ensuring perfect display on desktop, tablet, and mobile devices with responsive frameworks and CSS.</li>
-            <li><strong>Deployment & Performance:</strong> Vercel, Netlify, VPS management, domain configuration, SSL setup, and performance optimization for 30-40% faster page loads.</li>
+            <li><strong>Full Stack Web Development:</strong> React/JavaScript frontend, Node.js/Express backend, and database design with PostgreSQL/MySQL for scalable applications.</li>
+            <li><strong>AI Tool Integration:</strong> Integrating modern AI services (GPT, Vision APIs, LLMs) into web apps for intelligent features and enhanced user experience.</li>
+            <li><strong><span class="term-link" data-term="Python">Python</span> <span class="term-link" data-term="Automation">Automation</span>:</strong> Advanced scripting for web scraping, data processing, trading automation, and system integration tasks.</li>
+            <li><strong>Responsive Design:</strong> Cross-device optimization with CSS3 animations, flexbox, grid, and mobile-first approach ensuring perfect display everywhere.</li>
+            <li><strong>Deployment & DevOps:</strong> Vercel, Netlify, VPS deployment, domain management, SSL certificates, and performance monitoring for 30-40% faster load times.</li>
           </ul>
         </section>
-
       </main>
     </div>
   </div>
 
-<script>
-/* --- RIPPLE ANIMATION --- */
-(function() {
-  const canvas = document.getElementById('rippleCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let width, height;
-  let ripples = [];
-  const colors = ['#FF6B35', '#FF8C42', '#FFB347'];
+  <script>
+    /* --- RIPPLE ANIMATION --- */
+    (function() {
+      const canvas = document.getElementById('rippleCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let ripples = [];
+      const colors = ['#FF6B35', '#FF8C42', '#FFB347'];
 
-  const resize = () => { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; };
-  window.addEventListener('resize', resize); resize();
+      const resize = () => {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+      };
+      window.addEventListener('resize', resize);
+      resize();
 
-  class Ripple {
-    constructor(x, y, isClick = false) {
-      this.x = x; this.y = y; this.radius = 1;
-      if (isClick) {
-        this.maxRadius = 250; this.speed = 2.5; this.opacity = 0.8; this.lineWidth = 2; this.color = '#FFB347';
-      } else {
-        this.maxRadius = Math.random() * 120 + 80; this.speed = Math.random() * 0.4 + 0.3;
-        this.opacity = Math.random() * 0.3 + 0.1; this.lineWidth = Math.random() * 1.5 + 0.5;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
+      class Ripple {
+        constructor(x, y, isClick = false) {
+          this.x = x;
+          this.y = y;
+          this.radius = 1;
+          if (isClick) {
+            this.maxRadius = 250;
+            this.speed = 2.5;
+            this.opacity = 0.8;
+            this.lineWidth = 2;
+            this.color = '#FFB347';
+          } else {
+            this.maxRadius = Math.random() * 120 + 80;
+            this.speed = Math.random() * 0.4 + 0.3;
+            this.opacity = Math.random() * 0.3 + 0.1;
+            this.lineWidth = Math.random() * 1.5 + 0.5;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+          }
+        }
+
+        update() {
+          this.radius += this.speed;
+          this.opacity -= this.speed / this.maxRadius;
+        }
+
+        draw() {
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.strokeStyle = this.hexToRgba(this.color, Math.max(0, this.opacity));
+          ctx.lineWidth = this.lineWidth;
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        hexToRgba(hex, alpha) {
+          const r = parseInt(hex.slice(1, 3), 16);
+          const g = parseInt(hex.slice(3, 5), 16);
+          const b = parseInt(hex.slice(5, 7), 16);
+          return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
       }
-    }
-    update() { this.radius += this.speed; this.opacity -= (this.speed / this.maxRadius); }
-    draw() {
-      ctx.save(); ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.strokeStyle = this.hexToRgba(this.color, Math.max(0, this.opacity));
-      ctx.lineWidth = this.lineWidth; ctx.stroke(); ctx.restore();
-    }
-    hexToRgba(hex, alpha) {
-      const r = parseInt(hex.slice(1, 3), 16); const g = parseInt(hex.slice(3, 5), 16); const b = parseInt(hex.slice(5, 7), 16);
-      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-    }
-  }
 
-  function animate() {
-    ctx.clearRect(0, 0, width, height);
-    if (Math.random() < 0.02) ripples.push(new Ripple(Math.random() * width, Math.random() * height, false));
-    for (let i = 0; i < ripples.length; i++) {
-      ripples[i].update(); ripples[i].draw();
-      if (ripples[i].opacity <= 0 || ripples[i].radius >= ripples[i].maxRadius) { ripples.splice(i, 1); i--; }
-    }
-    requestAnimationFrame(animate);
-  }
-  window.addEventListener('mousedown', (e) => ripples.push(new Ripple(e.clientX, e.clientY, true)));
-  window.addEventListener('load', animate);
-})();
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        if (Math.random() < 0.02) {
+          ripples.push(new Ripple(Math.random() * width, Math.random() * height, false));
+        }
+        for (let i = 0; i < ripples.length; i++) {
+          ripples[i].update();
+          ripples[i].draw();
+          if (ripples[i].opacity <= 0 || ripples[i].radius >= ripples[i].maxRadius) {
+            ripples.splice(i, 1);
+            i--;
+          }
+        }
+        requestAnimationFrame(animate);
+      }
 
-/* --- KNOWLEDGE BASE MODAL --- */
-(function() {
-  const definitions = {
-    "Python": "High-level programming language. Used extensively for automation scripts, web scraping, data processing, and trading automation.",
-    "Automation": "Using Python scripts to automate repetitive tasks, data workflows, web scraping, and system integration for better efficiency.",
-    "AI Integration": "Integrating AI services like GPT, Vision APIs, and other AI tools into web applications to enhance features and functionality.",
-    "JavaScript": "Versatile language for interactive web development. Used for both frontend (React) and backend (Node.js) development.",
-    "Node.js": "JavaScript runtime for building scalable server-side applications, REST APIs, and real-time systems.",
-    "React": "Modern JavaScript library for building fast, interactive user interfaces with component-based architecture.",
-    "PostgreSQL": "Advanced open-source relational database known for reliability, complex queries, and data integrity. Ideal for production applications.",
-    "MySQL": "Popular relational database management system, widely used for web applications with good performance and ease of setup.",
-    "HTML": "Markup language for web pages. HTML5 provides semantic elements and modern web standards for structured content.",
-    "CSS": "Styling language for creating beautiful, responsive designs with animations, layouts, and visual effects."
-  };
+      window.addEventListener('mousedown', (e) => ripples.push(new Ripple(e.clientX, e.clientY, true)));
+      window.addEventListener('load', animate);
+    })();
 
-  const modal = document.getElementById('infoModal');
-  const titleEl = document.getElementById('modalTitle');
-  const descEl = document.getElementById('modalDesc');
-  const closeBtn = document.getElementById('closeModal');
-  const triggers = document.querySelectorAll('[data-term]');
+    /* --- SKILL DEFINITIONS MODAL --- */
+    (function() {
+      const definitions = {
+        "Python": "High-level programming language used for automation scripts, web scraping, data processing, and trading systems.",
+        "JavaScript": "Versatile language for interactive web experiences, used in both frontend and backend development.",
+        "React": "Modern library for building fast, interactive user interfaces with component-based architecture.",
+        "Node.js": "JavaScript runtime for building scalable server-side applications and REST APIs.",
+        "PostgreSQL": "Advanced relational database with strong consistency, complex queries, and perfect for production systems.",
+        "MySQL": "Popular relational database with high performance, widely used in web applications worldwide.",
+        "Automation": "Python scripting for automating repetitive tasks, web scraping, data workflows, and system integration.",
+        "AI Integration": "Integrating AI services like GPT, Vision APIs, and LLMs into applications for intelligent features.",
+        "HTML": "Semantic markup language for web pages with HTML5 providing modern web standards.",
+        "CSS": "Styling language for creating beautiful, responsive designs with animations and visual effects.",
+        "Express": "Lightweight Node.js framework for building fast, scalable web servers and REST APIs.",
+        "API Development": "Building robust APIs for communication between frontend and backend systems.",
+        "Deployment": "Deploying applications on Vercel, Netlify, VPS with monitoring and performance optimization.",
+        "Responsive Design": "Creating websites that look perfect on desktop, tablet, and mobile devices."
+      };
 
-  function openModal(term) {
-    titleEl.textContent = term;
-    descEl.textContent = definitions[term] || "No description available.";
-    modal.classList.add('active');
-  }
-  function closeModal() { modal.classList.remove('active'); }
+      const modal = document.getElementById('infoModal');
+      const titleEl = document.getElementById('modalTitle');
+      const descEl = document.getElementById('modalDesc');
+      const closeBtn = document.getElementById('closeModal');
+      const triggers = document.querySelectorAll('[data-term]');
 
-  triggers.forEach(t => t.addEventListener('click', (e) => { e.stopPropagation(); openModal(t.getAttribute('data-term')); }));
-  closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-})();
-</script>
+      function openModal(term) {
+        titleEl.textContent = term;
+        descEl.textContent = definitions[term] || "No description available.";
+        modal.classList.add('active');
+      }
 
+      function closeModal() {
+        modal.classList.remove('active');
+      }
+
+      triggers.forEach((t) => {
+        t.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openModal(t.getAttribute('data-term'));
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+    })();
+  </script>
 </body>
 </html>
