@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Sachin Kumar — Full Stack Web Developer & BCA Student. Specialized in AI-integrated web applications, Python automation, and forex trading. 3+ years freelance experience." />
-  <meta name="keywords" content="web developer, full-stack, Python automation, AI integration, PostgreSQL, MySQL, React, Node.js" />
+  <meta name="keywords" content="web developer, full-stack, Python automation, AI integration, Gemini, Claude, ChatGPT, Prompt Engineering, Copilot, PostgreSQL, MySQL, React, Node.js" />
   <meta name="author" content="Sachin Kumar" />
   <meta property="og:title" content="Sachin Kumar — Full Stack Web Developer" />
   <meta property="og:description" content="Building modern web apps with AI integration, Python automation, and 3+ years of professional experience." />
@@ -498,10 +498,9 @@
     @media print {
       @page {
         size: A4;
-        margin: 6mm 6mm; /* Keeps elements bounded on single sheets safely */
+        margin: 6mm 6mm;
       }
       
-      /* Force browser engine to maintain styling elements explicitly */
       * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
@@ -521,19 +520,18 @@
         width: 100% !important;
       }
 
-      /* STRICT BOX RENDERING PRODUCING SHARP CORNERS & PRESERVING LINK LAYERS */
       .resume-card {
         box-shadow: none !important;
         border: 1.5px solid rgba(0, 176, 255, 0.25) !important;
         background: #070c20 !important;
-        border-radius: 24px !important; /* Locks rounded corner matrix on print */
-        overflow: hidden !important;     /* Cuts background leakage cleanly */
+        border-radius: 24px !important;
+        overflow: hidden !important;
         padding: 32px !important;
         display: grid !important;
         grid-template-columns: 260px 1fr !important;
         gap: 28px !important;
         width: 100% !important;
-        position: relative !important;   /* Fixes layered tracking link layout bugs */
+        position: relative !important;
       }
       
       .sidebar {
@@ -562,7 +560,6 @@
         border-radius: 8px !important;
       }
       
-      /* Enforces click layers to remain accessible on compiled vector PDFs */
       a {
         color: #00E5FF !important;
         text-decoration: none !important;
@@ -628,10 +625,14 @@
             <div class="skill" data-term="JavaScript">JavaScript</div>
             <div class="skill" data-term="React">React</div>
             <div class="skill" data-term="Node.js">Node.js</div>
+            <div class="skill" data-term="Gemini">Gemini</div>
+            <div class="skill" data-term="Claude">Claude</div>
+            <div class="skill" data-term="ChatGPT">ChatGPT</div>
+            <div class="skill" data-term="Prompt Eng.">Prompt Eng.</div>
+            <div class="skill" data-term="Copilot">Copilot</div>
             <div class="skill" data-term="PostgreSQL">PostgreSQL</div>
             <div class="skill" data-term="MySQL">MySQL</div>
             <div class="skill" data-term="Automation">Automation</div>
-            <div class="skill" data-term="AI Integration">AI Tools</div>
           </div>
         </div>
 
@@ -755,6 +756,7 @@
         <section class="section-card">
           <h3>🎯 Core Expertise</h3>
           <ul class="bullets">
+            <li><strong>Advanced Prompt Engineering & AI Orchestration:</strong> Expert in structuring and leveraging high-level interaction paradigms with Gemini, Claude, and ChatGPT to optimize workflow delivery, build intelligent autonomous layers, and drive production-grade AI integration.</li>
             <li><strong>Full Stack Web Development:</strong> React/JavaScript frontend, Node.js/Express backend, and database design with PostgreSQL/MySQL for scalable applications.</li>
             <li><strong>AI Tool Integration:</strong> Integrating modern AI services (GPT, Vision APIs, LLMs) into web apps for intelligent features and enhanced user experience.</li>
             <li><strong><span class="term-link" data-term="Python">Python</span> <span class="term-link" data-term="Automation">Automation</span>:</strong> Advanced scripting for web scraping, data processing, trading automation, and system integration tasks.</li>
@@ -855,6 +857,11 @@
         "JavaScript": "Versatile language for interactive web experiences, used in both frontend and backend development.",
         "React": "Modern library for building fast, interactive user interfaces with component-based architecture.",
         "Node.js": "JavaScript runtime for building scalable server-side applications and REST APIs.",
+        "Gemini": "Google's advanced multimodal AI architecture, utilized for production-grade context window handling, vision analysis, and technical reasoning pipelines.",
+        "Claude": "Anthropic's high-intelligence LLM focused on extreme structural coding precision, advanced logical constraints, and analytical output structuring.",
+        "ChatGPT": "OpenAI's foundational platform utilized for building automated agent workflows, rapid software debugging, and diverse conversational state integration.",
+        "Prompt Eng.": "The practice of structuring and optimizing textual inputs to programmatically elicit specific, high-quality responses from LLMs.",
+        "Copilot": "AI-powered coding companion providing real-time code suggestions, auto-completion, and contextual refactoring within IDEs.",
         "PostgreSQL": "Advanced relational database with strong consistency, complex queries, and perfect for production systems.",
         "MySQL": "Popular relational database with high performance, widely used in web applications worldwide.",
         "Automation": "Python scripting for automating repetitive tasks, web scraping, data workflows, and system integration.",
